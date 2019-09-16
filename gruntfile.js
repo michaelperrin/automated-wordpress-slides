@@ -155,6 +155,9 @@ module.exports = grunt => {
 			markdown: {
 				files: root.map(path => path + '/*.md')
 			},
+			slides: {
+				files: [ 'slides/{,*/}*.{md,html}' ]
+			},
 			options: {
 				livereload: true
 			}
