@@ -62,6 +62,23 @@
 					<img src="images/step-1-file-tree.png" alt="">
 
 					TODO: add .env and wp-content
+
+					An environment variable is a variable whose value is set outside the program, typically through functionality built into
+					the operating system or microservice. An environment variable is made up of a name/value pair, and any number may be
+					created and available for reference at a point in time.
+					https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa
+
+					Tell that this is a good practice used for Node / Webpack, Symfony, Laravel
+					TODO: talk now about TeamCity and Gitlab (https://docs.gitlab.com/ee/ci/variables/)?
+
+					Note: WP code is hidden
+				</section>
+
+				<section data-markdown>
+					One command: `docker-compose up -d`
+
+					Result: TODO: screenshot
+					</div>
 				</section>
 
 				<section>
@@ -74,19 +91,59 @@
 						<li>Versioned infrastructure.</li>
 						<li>Easy to update configuration for all environmnents.</li>
 						<li>Easy to deploy to any hosting providers.</li>
+						<li>Easy to deploy to reproduce (integrated into a CI/CD).</li>
 						<li>and... one command to setup the project.</li>
 					</ul>
 				</section>
 
 				<section>
-					Result / demo
+					Thanks!
+					...wait
+				</section>
 
-					-> We get the WP wizard with one command line.
+				<section data-markdown>
+					## Ditch the wizard
+
+					What we want to do
+
+					* Add default admin user.
+					* Configure database parameters (aka edit `wp-config.php`).
+					* Posts URL structure.
+					* Set language
 				</section>
 
 				<section>
-					Thanks!
-					...wait
+					Configure with WP-CLI.
+
+					Show docker-compose entry with env vars.
+
+					Note: use of WORDPRESS_CONFIG_EXTRA works too. But it can't be modified.
+					Note: we have introduced some new env vars, but some of them are shared -> show updated .env file
+					Note: some variables are hard-coded (eg. locale, title, etc.) in docker-compose.yml instead of being set in the .env
+					because they don't depend on the environment.
+				</section>
+
+
+				<section>
+					## Install WP-CLI with Docker
+
+					Create Dockerfile
+
+
+					TODO: should I create my image instead?
+				</section>
+
+				<section>
+					Should I talk about php.ini? Mentioning it at the end?
+				</section>
+
+				<section>
+					TODO: go further with .env: API endpoint, email recipients, etc.
+					Show that .env can be defined in TeamCity, etc.
+				</section>
+
+				<section>
+					Show env variables of docker-compose.yml group by group (ADMIN_*, etc.)
 				</section>
 
 				<section>
@@ -101,6 +158,26 @@
 				</section>
 
 				<section>
+					Deploying with Docker.
+
+					The idea is to build a new image each time. That's fine because we can reproduce builds automatically.
+				</section>
+
+				<section>
+					TODO
+					Things I have not shown.
+
+					* Access to database (phpMyAdmin or GUI).
+					* Run Webpack inside theme to build a theme.
+				</section>
+
+				<section>
+					Real demo: clone repository, run command, show that it works
+				</section>
+
+				<section>
+					You can clone the repository at .... run the commands
+
 					Thanks.
 					Twitter
 					Link to slides or website.
