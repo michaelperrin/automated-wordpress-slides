@@ -26,13 +26,21 @@
 		<div class="reveal">
 			<div class="slides">
 				<section data-markdown="slides/title.md"></section>
+				<section>
+					What this talk be about
+
+					Note:
+					Some parts will be shown quickly.
+					You don't need all parts.
+
+				</section>
 
 				<section data-markdown="slides/wp-standard-install.md"></section>
 
 				<section>
 					<ul>
 						<li>
-							10-minutes install -> 30 seconds install<br>
+							5-minutes install -> 30 seconds install<br>
 							<img data-src="images/5-min-install-cropped.png" alt="">
 						</li>
 						<li><em>No clicks whatsoever</em>™️ install</li>
@@ -78,7 +86,6 @@
 					One command: `docker-compose up -d`
 
 					Result: TODO: screenshot
-					</div>
 				</section>
 
 				<section>
@@ -113,6 +120,20 @@
 				</section>
 
 				<section>
+					<h2>What is WP-CLI</h2>
+
+					<blockquote>
+						WP-CLI provides a command-line interface for many actions you might perform in the WordPress admin.
+						<footer>wp-cli.org</footer>
+					</blockquote>
+
+					Examples:
+
+					* wp plugin install bpress --activate
+					* ...
+				</section>
+
+				<section>
 					Configure with WP-CLI.
 
 					Show docker-compose entry with env vars.
@@ -131,6 +152,29 @@
 
 
 					TODO: should I create my image instead?
+				</section>
+
+				<section data-markdown>
+					## Makefile
+
+					What are Makefiles?
+
+					```Makefile
+					example_command:
+						# ...
+
+					example_command_2:
+						# ...
+					```
+
+					It's a file where we can define a set of scripts.
+					Allows us to abstract some commands, to make them easier to execute.
+					Allows us to run several commands with one command (it's a script).
+
+					Our first one: `make start` will run the project locally.
+
+
+					We are going to add them to the project.
 				</section>
 
 				<section>
