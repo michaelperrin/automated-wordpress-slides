@@ -1,0 +1,12 @@
+.front {
+    @import "./components/desk";
+
+    height: 100%;
+    width: 100%;
+
+    img {
+        border: 0;
+        box-shadow: none;
+        background: none;
+    }
+}

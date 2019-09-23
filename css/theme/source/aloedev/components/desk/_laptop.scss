@@ -1,0 +1,99 @@
+$control-size: 6px;
+$title-bar-height: 10px;
+$editor-background-color: #272822;
+$laptop-border-radius: 12px 12px 4px 4px;
+$laptop-color: #c3c5c6;
+
+.laptop {
+    .screen-container {
+        /* Make height proportional to width */
+        /* See http://stackoverflow.com/questions/11535827/responsive-height-proportional-to-width */
+        width: 100%;
+        position: relative;
+        height: 0;
+        padding-bottom: 60%;
+    }
+
+    .screen {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border-radius: $laptop-border-radius;
+        border: 2px solid $laptop-color;
+        background-color: black;
+        padding: 3%;
+
+        @media (max-width: 991px) {
+            border-radius: 6px 6px 1px 1px;
+        }
+
+        .editor {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+
+            .window {
+                display: table;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+
+                .title-bar {
+                    display: table-row;
+
+                    background-color: #ddd;
+                    height: $title-bar-height;
+                    line-height: $control-size;
+
+                    .controls {
+                        list-style-type: none;
+                        display: table-cell;
+                        vertical-align: middle;
+                        margin: 0;
+                        padding: 0 3px;
+
+                        .control {
+                            display: inline-block;
+                            width: $control-size;
+                            height: $control-size;
+                            border-radius: $control-size;
+
+                            &.control-close {
+                                background-color: #ff6058;
+                            }
+
+                            &.control-minimize {
+                                background-color: #ffbd2d;
+                            }
+
+                            &.control-full-screen {
+                                background-color: #27c93f;
+                            }
+
+                            &:not(:last-child) {
+                                margin-right: 3px;
+                            }
+                        }
+                    }
+                }
+
+                .content {
+                    display: table-cell;
+                    width: 100%;
+                    overflow: hidden;
+                    padding: 4px;
+                    font-size: 6px;
+                    background-color: $editor-background-color;
+                }
+            }
+        }
+    }
+
+    .keyboard {
+        img {
+            // Quite empiric values ;)
+            width: 132%;
+            margin-left: -16%;
+        }
+    }
+}

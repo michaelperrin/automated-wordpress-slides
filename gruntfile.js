@@ -135,7 +135,7 @@ module.exports = grunt => {
 			theme: {
 				files: [
 					'css/theme/source/*.sass',
-					'css/theme/source/*.scss',
+					'css/theme/source/**/*.scss',
 					'css/theme/template/*.sass',
 					'css/theme/template/*.scss'
 				],

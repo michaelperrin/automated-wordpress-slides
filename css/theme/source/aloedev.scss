@@ -1,0 +1,78 @@
+/**
+ * White theme for reveal.js. This is the opposite of the 'black' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #222;
+$headingColor: #222;
+
+$mainFontSize: 40px;
+$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: -apple-system, system-ui, 'Source Sans Pro', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingFontWeight: 600;
+$linkColor: #2a76dd;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2em;
+$heading2Size: 1.4em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+section.has-dark-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #fff;
+	}
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+
+.reveal {
+    @import "./aloedev/front";
+
+    h1 {
+        font-weight: 900;
+    }
+
+    h2 {
+        margin-bottom: 40px;
+        font-weight: 900;
+
+        &::after {
+            content: "";
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+            width: 30%;
+            border-bottom: 6px solid #92B600;
+            margin-top: 20px;
+        }
+    }
+
+    section {
+        img {
+            border: 0;
+        }
+    }
+}

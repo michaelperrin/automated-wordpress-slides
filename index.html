@@ -12,6 +12,8 @@
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
+		<link href="https://fonts.googleapis.com/css?family=Viga&display=swap" rel="stylesheet">
+
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -25,7 +27,63 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section data-markdown="slides/title.md"></section>
+				<section data-background-color="#e2e7e6" data-markdown="slides/title.md"></section>
+				<section class="front" data-background-color="#e2e7e6">
+					<div class="desk">
+						<div class="desk-container">
+							<div class="desk-table">
+							</div>
+						</div>
+
+						<img src="images/light.svg" class="light" alt="">
+
+						<div class="laptop-container">
+							<div class="laptop">
+								<div class="screen-container">
+									<div class="screen">
+										<div class="editor">
+											<div class="window">
+												<div class="title-bar">
+													<ul class="controls">
+														<li class="control control-close"></li>
+														<li class="control control-minimize"></li>
+														<li class="control control-full-screen"></li>
+													</ul>
+												</div>
+												<div class="content">
+													<pre id="typed"></pre>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="keyboard">
+									<img src="images/laptop-keyboard.svg" alt="">
+								</div>
+							</div>
+						</div>
+
+						<img src="images/vaxter.svg" class="vaxter" alt="">
+
+						<div class="intro">
+							<h1>Michaël Perrin</h1>
+
+							<div>Développeur web freelance.</div>
+
+							<div>
+								<div class="availability available">
+									<a href="#contact"><i class="fa fa-circle" aria-hidden="true"></i> Disponible</a>
+								</div>
+
+								<div class="location">
+									<i class="fa fa-map-marker" aria-hidden="true"></i> Paris, France
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
 				<section>
 					What this talk be about
 
@@ -48,8 +106,8 @@
 				</section>
 
 				<section>Benefits</section>
+				<section data-background-color="#e2e7e6" data-markdown="slides/automating-infrastructure/index.md"></section>
 				<section data-markdown="slides/automating-infrastructure/docker-containers.md"></section>
-				<section data-markdown="slides/automating-infrastructure.md"></section>
 				<section data-markdown="slides/docker-compose.md"></section>
 				<section data-markdown="slides/docker-compose-wordpress.md"></section>
 				<section data-markdown="slides/docker-compose-database-1.md" data-transition="slide-in none"></section>
@@ -146,12 +204,10 @@
 
 
 				<section>
-					## Install WP-CLI with Docker
+					We don't want to install PHP and WP-CLI on every server.
+					We want to run commands with a Makefile.
 
-					Create Dockerfile
-
-
-					TODO: should I create my image instead?
+					I created a public Docker image that embeds WP-CLI and runs Makefile.
 				</section>
 
 				<section data-markdown>
@@ -178,6 +234,13 @@
 				</section>
 
 				<section>
+					## Step 2: result
+
+					We have a fully functional WordPress website. I can login with the admin user I defined.
+					Screenshot.
+				</section>
+
+				<section>
 					Should I talk about php.ini? Mentioning it at the end?
 				</section>
 
@@ -188,6 +251,10 @@
 
 				<section>
 					Show env variables of docker-compose.yml group by group (ADMIN_*, etc.)
+				</section>
+
+				<section>
+					Automating data changes
 				</section>
 
 				<section>
@@ -220,6 +287,22 @@
 				</section>
 
 				<section>
+					The plugin can be used without any of the the first steps.
+
+					Migrations are in the `wp-content` folder.
+				</section>
+
+				<section>
+					Plugin will soon be released officially.
+
+					Admin interface to see the migrations that were run.
+				</section>
+
+				<section>
+					<img data-src="images/admin-migrations.png" alt="">
+				</section>
+
+				<section>
 					You can clone the repository at .... run the commands
 
 					Thanks.
@@ -237,6 +320,8 @@
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
 				hash: true,
+				width: '100%',
+				height: '100%',
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
