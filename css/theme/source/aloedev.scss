@@ -13,6 +13,7 @@
 
 // Include theme-specific fonts
 @import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+@import url(../../lib/font/calibre-test/calibre-test.css);
 
 
 // Override theme settings (see ../template/settings.scss)
@@ -23,7 +24,7 @@ $headingColor: #222;
 
 $mainFontSize: 40px;
 $mainFont: 'Source Sans Pro', Helvetica, sans-serif;
-$headingFont: -apple-system, system-ui, 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: 'Calibre Test', 'Source Sans Pro', Helvetica, sans-serif;
 $headingTextShadow: none;
 $headingLetterSpacing: normal;
 $headingTextTransform: uppercase;

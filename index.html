@@ -10,10 +10,11 @@
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/aloedev.css">
 
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap" rel="stylesheet">
+
+
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
-		<link href="https://fonts.googleapis.com/css?family=Viga&display=swap" rel="stylesheet">
-
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -115,10 +116,26 @@
 				<section data-markdown="slides/docker-compose-webserver.md"></section>
 
 				<section>
+					Environments
+
+					TODO: schema Local -> QA -> Staging -> Production
+				</section>
+
+				<section>
 					.env
 
 					<ul>
-						<li>No credentials in commited files</li>
+						<li>
+							Place to store verything that is or may be specific to an environment. Example:
+
+							<ul>
+								<li>Database parameters</li>
+								<li>Website URLs (eg. root URL of the website, API endpoint, etc.)</li>
+								<li>Email recipients</li>
+							</ul>
+						</li>
+						<li>This file is <strong>not</strong> commited.</li>
+						<li>Environment variables can be set in CI/CD tools (Travis CI, TeamCity, Gitlab CI, etc.)</li>
 					</ul>
 				</section>
 
@@ -144,6 +161,12 @@
 					One command: `docker-compose up -d`
 
 					Result: TODO: screenshot
+				</section>
+
+				<section>
+					More can be done. Examples:
+
+					Note: this is the demo repository that I will provide.
 				</section>
 
 				<section>

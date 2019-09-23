@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Calibre Test';
+    src: url('CalibreTest-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Calibre Test';
+    src: url('CalibreTest-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Calibre Test';
+    src: url('CalibreTest-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
