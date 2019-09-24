@@ -4,7 +4,7 @@
     <li>Select the theme.</li>
     <li class="fragment">Install plugins.</li>
     <li class="fragment">
-        Configure plugins.
+        Configure plugins in WordPress admin interface.
         <ul>
             <li>Set API keys (eg. MailChimp, Google Maps, etc.)</li>
             <li>Import data</li>

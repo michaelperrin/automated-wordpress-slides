@@ -100,5 +100,33 @@ section.has-dark-background {
                 padding-left: 20px;
             }
         }
+
+        &.what-is-docker {
+            .docker-logo {
+                height: 60px;
+                box-shadow: none;
+            }
+
+            .logos {
+                display: flex;
+
+                img {
+                    height: 50px;
+                    box-shadow: none;
+                    margin-right: 20px;
+                }
+            }
+        }
+
+        &.three-automation-steps {
+            h2::after {
+                border-color: #88b616;
+            }
+
+            ol {
+                line-height: 2;
+                font-weight: bold;
+            }
+        }
     }
 }

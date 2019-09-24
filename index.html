@@ -202,15 +202,16 @@
 					<p class="fragment" style="font-size: 0.5em; margin-top: 0">Because developers are lazy? 🤔</p>
 
 					<ul>
-						<li class="fragment">Multi-environments (staging, QA, production, …)</li>
+						<li class="fragment">Multi-<strong>environments</strong> (staging, QA, production, …)</li>
 						<li class="fragment">
-							PHP and MySQL configuration &amp; version consistency.<br>
+							PHP and MySQL configuration &amp; version <strong>consistency</strong>.<br>
 							<span class="fragment">→ Avoids « It works on my machine ¯\_(ツ)_/¯ ».</span>
 						</li>
-						<li class="fragment">Versioning of the project is enforced and made easy.</li>
+						<li class="fragment"><strong>Versioning</strong> of the project is enforced and made easy.</li>
 						<li class="fragment">CI/CD integration (Travis CI, Circle CI, etc.).</li>
 						<li class="fragment">Team work is streamlined.</li>
 						<li class="fragment">Faster deployments (no "in between" state).</li>
+						<li class="fragment">"Cloud-ready".</li>
 					</ul>
 
 					<aside class="notes">
@@ -232,16 +233,68 @@
 					</ul>
 				</section>
 
-				<section>
+				<section class="three-automation-steps" data-background-color="#e2e7e9">
 					<h2>
-						How?
+						What are are going to automate?
 					</h2>
 
-					Show 3 main steps
+					<ol>
+						<li class="fragment">Infrastructure setup.</li>
+						<li class="fragment">WordPress configuration.</li>
+						<li class="fragment">WordPress data.</li>
+					</ol>
 				</section>
 
 				<section data-background-color="#363a44" data-markdown="slides/automating-infrastructure/index.md"></section>
+
+				<section>
+					<img src="images/logos/docker-logo.svg" alt="Docker" style="box-shadow: none; display: block; margin-left: auto; margin-right: auto;">
+				</section>
+
+				<section class="what-is-docker">
+					<h2>Quick introduction</h2>
+
+					<ul>
+						<li class="fragment">"Lightweight virtualisation".</li>
+						<li class="fragment">Each service runs in a separate Docker container.</li>
+						<li class="fragment">
+							Many services already have official images.<br>
+
+							<div class="logos">
+								<div class="fragment">
+									<img data-src="images/logos/php-logo.svg" alt="">
+								</div>
+								<div class="fragment">
+									<img data-src="images/logos/wordpress-logo.svg" alt="">
+								</div>
+								<div class="fragment">
+									<img data-src="images/logos/mysql-logo.svg" alt="">
+								</div>
+								<div class="fragment">
+									<img data-src="images/logos/phpmyadmin.png" alt="">
+								</div>
+							</div>
+						</li>
+						<li class="fragment">It is also possible to build custom images.</li>
+						<li class="fragment">Rule of thumb: one service per container.</li>
+						<li class="fragment">Works on Linux, Windows, MacOS</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Docker: benefits</h2>
+
+					<ul>
+						<li>Very handy for local development and for servers.</li>
+						<li>Documents and versions the infrastructure of the project.</li>
+						<li>Allows to install any version of any dependency.</li>
+						<li>Isolation of projects.</li>
+					</ul>
+				</section>
+
 				<section data-markdown="slides/automating-infrastructure/docker-containers.md"></section>
+
+
 				<section data-markdown="slides/docker-compose.md"></section>
 				<section data-markdown="slides/docker-compose-wordpress.md"></section>
 				<section data-markdown="slides/docker-compose-database-1.md" data-transition="slide-in none"></section>
@@ -267,9 +320,14 @@
 								<li>Email recipients</li>
 							</ul>
 						</li>
+						<li>May contain sensitive data.</li>
 						<li>This file is <strong>not</strong> commited.</li>
 						<li>Environment variables can be set in CI/CD tools (Travis CI, TeamCity, Gitlab CI, etc.)</li>
 					</ul>
+
+					<aside class="notes">
+						.env are used in many systems, like WebPack, Symfony, etc.
+					</aside>
 				</section>
 
 				<section>
@@ -317,6 +375,26 @@
 					</ul>
 				</section>
 
+				<section data-markdown>
+					## Adding services is easy
+
+					Example with phpMyAdmin:
+
+					```yaml
+					services:
+						# ...
+
+						phpmyadmin:
+							image: phpmyadmin/phpmyadmin
+								links:
+									- database:db
+								ports:
+									- 8082:80
+					```
+
+					Start containers again and phpMyAdmin will be available at http://localhost:8082.
+				</section>
+
 				<section data-background-color="#363a44">
 					<h1>Automate WordPress configuration</h1>
 				</section>
@@ -330,6 +408,8 @@
 					* Configure database parameters (aka edit `wp-config.php`).
 					* Posts URL structure.
 					* Set language
+
+					Note: there is nothing bad about that wizard, it's just that we can't reproduce the steps.
 				</section>
 
 				<section>
@@ -348,11 +428,31 @@
 							</blockquote>
 						</div>
 					</div>
+				</section>
 
-					Examples:
+				<section>
+					<h2>Configure WordPress with WP-CLI</h2>
 
-					* wp plugin install bpress --activate
-					* ...
+					<div>
+						Generate a <em>wp-config.php</em> file with DB parameters:
+
+						<pre><code class="shell">wp-cli config create --dbhost=… --dbname=… &lt;...&gt;</code></pre>
+					</div>
+
+					<div>
+						Run the standard WordPress installation process:
+
+						<pre><code class="shell">wp-cli core install --url=… --title=…</code></pre>
+					</div>
+
+					<div>
+						Install and activate plugins:
+
+						<pre><code class="shell" data-trim data-noescape>
+							wp-cli plugin install contact-form-7 --activate
+							wp-cli plugin install advanced-custom-fields --activate
+						</code></pre>
+					</div>
 				</section>
 
 				<section>
@@ -380,14 +480,17 @@
 					What are Makefiles?
 
 					```Makefile
-					example_command:
+					task_one:
 						# ...
 
-					example_command_2:
+					task_two:
+						# ...
+
+					task_three: task_one task_two
 						# ...
 					```
 
-					It's a file where we can define a set of scripts.
+					It's a file where we can define a set of scripts grouped as tasks.
 					Allows us to abstract some commands, to make them easier to execute.
 					Allows us to run several commands with one command (it's a script).
 
@@ -472,6 +575,19 @@
 					Thanks.
 					Twitter
 					Link to slides or website.
+				</section>
+
+				<section>
+					<h2>Thank you</h2>
+
+					<ul>
+						<li>Twitter: <a href="https://twitter.com/michael_perrin">@michael_perrin</a></li>
+						<li>Demo repository: <a href="https://github.com/michaelperrin/automated-wordpress-demo">https://github.com/michaelperrin/automated-wordpress-demo</a></li>
+					</ul>
+
+					<aside class="notes">
+						Slides will be available soon.
+					</aside>
 				</section>
 			</div>
 		</div>

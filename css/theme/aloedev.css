@@ -424,3 +424,21 @@ body {
   .reveal section blockquote footer {
     font-style: normal;
     padding-left: 20px; }
+
+.reveal section.what-is-docker .docker-logo {
+  height: 60px;
+  box-shadow: none; }
+
+.reveal section.what-is-docker .logos {
+  display: flex; }
+  .reveal section.what-is-docker .logos img {
+    height: 50px;
+    box-shadow: none;
+    margin-right: 20px; }
+
+.reveal section.three-automation-steps h2::after {
+  border-color: #88b616; }
+
+.reveal section.three-automation-steps ol {
+  line-height: 2;
+  font-weight: bold; }
