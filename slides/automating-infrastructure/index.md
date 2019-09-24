@@ -1,2 +1,2 @@
-# Step 1<br>Automating infrastructure setup
+# Automating infrastructure setup
 

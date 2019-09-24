@@ -28,8 +28,14 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section data-background-color="#e2e7e6" data-markdown="slides/title.md"></section>
-				<section class="front" data-background-color="#e2e7e6">
+				<section data-background-color="#e2e7e9">
+					<h1 class="title">
+						WordPress,<br>
+						<small>The automated way</small>
+					</h1>
+				</section>
+
+				<!-- <section class="front" data-background-color="#e2e7e9">
 					<div class="desk">
 						<div class="desk-container">
 							<div class="desk-table">
@@ -83,7 +89,7 @@
 							</div>
 						</div>
 					</div>
-				</section>
+				</section> -->
 
 				<section>
 					What this talk be about
@@ -94,7 +100,86 @@
 
 				</section>
 
+				<section data-background-color="#363a44">
+					<h1>A typical WordPress set-up</h1>
+
+					<p class="fragment">aka. the "Famous 5-minute install"</p>
+
+					<aside class="notes">
+						This is where do we go from.
+						I will of course not go through every detail.
+					</aside>
+				</section>
+
+				<section data-transition="slide-in none">
+					<img data-src="images/wp-wizard/get-mamp.png" alt="">
+
+					<aside class="notes">
+						Download PHP, MySQL using any tool
+					</aside>
+				</section>
+
+				<section data-transition="none">
+					<img data-src="images/wp-wizard/cli.png" alt="">
+
+					<aside class="notes">
+						Or you may go the command line way
+					</aside>
+				</section>
+
+				<section data-transition="none">
+					<img data-src="images/wp-wizard/db-setup.png" alt="">
+
+					<aside class="notes">
+						Boring things to do in the database
+					</aside>
+				</section>
+
+				<section data-transition="none">
+					<img data-src="images/wp-wizard/get-wp.png" alt="">
+
+					<aside class="notes">
+						This is where do we go from
+					</aside>
+				</section>
+
+				<section data-transition="none">
+					<img data-src="images/wp-wizard/wp-wizard-1.png" alt="">
+
+					<aside class="notes">
+						This is where do we go from
+					</aside>
+				</section>
+
+				<section data-transition="none">
+					<img data-src="images/wp-wizard/wp-wizard-2.png" alt="">
+				</section>
+
+				<section data-transition="none">
+					<img data-src="images/wp-wizard/wp-wizard-3.png" alt="">
+
+					<aside class="notes">
+						Set up the database parameters
+					</aside>
+				</section>
+
+				<section data-transition="none">
+					<img data-src="images/wp-wizard/wp-wizard-4.png" alt="">
+				</section>
+
+				<section data-transition="slide-out none">
+					<img data-src="images/wp-wizard/wp-wizard-5.png" alt="">
+
+					<aside class="notes">
+						Choose parameters for the website
+					</aside>
+				</section>
+
 				<section data-markdown="slides/wp-standard-install.md"></section>
+
+				<section>
+					<img src="images/typing-cat.gif" alt="">
+				</section>
 
 				<section>
 					<ul>
@@ -106,8 +191,56 @@
 					</ul>
 				</section>
 
-				<section>Benefits</section>
-				<section data-background-color="#e2e7e6" data-markdown="slides/automating-infrastructure/index.md"></section>
+				<section>
+					<h2>
+						Benefits
+					</h2>
+
+					<p style="margin-bottom: 0">
+						Why do we want to automate things?
+					</p>
+					<p class="fragment" style="font-size: 0.5em; margin-top: 0">Because developers are lazy? 🤔</p>
+
+					<ul>
+						<li class="fragment">Multi-environments (staging, QA, production, …)</li>
+						<li class="fragment">
+							PHP and MySQL configuration &amp; version consistency.<br>
+							<span class="fragment">→ Avoids « It works on my machine ¯\_(ツ)_/¯ ».</span>
+						</li>
+						<li class="fragment">Versioning of the project is enforced and made easy.</li>
+						<li class="fragment">CI/CD integration (Travis CI, Circle CI, etc.).</li>
+						<li class="fragment">Team work is streamlined.</li>
+						<li class="fragment">Faster deployments (no "in between" state).</li>
+					</ul>
+
+					<aside class="notes">
+						We will see in more details these benefits.
+
+						Version consistency: across developers and environments, no "it works for me effect". It can also be the PHP conf (max file size).
+						Easy versioning: we only version what's needed
+						Easier team work: work is replicated everywhere. No plugin to install manually, etc. Everyone is on the same page.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Development is more…</h2>
+
+					<ul>
+						<li class="fragment">Reliable</li>
+						<li class="fragment">Consistent</li>
+						<li class="fragment">Predictable</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>
+						How?
+					</h2>
+
+					Show 3 main steps
+				</section>
+
+				<section data-background-color="#363a44" data-markdown="slides/automating-infrastructure/index.md"></section>
 				<section data-markdown="slides/automating-infrastructure/docker-containers.md"></section>
 				<section data-markdown="slides/docker-compose.md"></section>
 				<section data-markdown="slides/docker-compose-wordpress.md"></section>
@@ -184,9 +317,8 @@
 					</ul>
 				</section>
 
-				<section>
-					Thanks!
-					...wait
+				<section data-background-color="#363a44">
+					<h1>Automate WordPress configuration</h1>
 				</section>
 
 				<section data-markdown>
@@ -203,10 +335,19 @@
 				<section>
 					<h2>What is WP-CLI</h2>
 
-					<blockquote>
-						WP-CLI provides a command-line interface for many actions you might perform in the WordPress admin.
-						<footer>wp-cli.org</footer>
-					</blockquote>
+					<div style="display: flex; width: 100%;">
+						<div>
+							<img data-src="images/wp-cli-logo.png" alt="" style="box-shadow: none">
+						</div>
+						<div>
+							<blockquote style="margin: 0 0 0 40px;">
+								<p>
+									WP-CLI provides a command-line interface for many actions you might perform in the WordPress admin.
+								</p>
+								<footer>wp-cli.org</footer>
+							</blockquote>
+						</div>
+					</div>
 
 					Examples:
 
@@ -276,8 +417,8 @@
 					Show env variables of docker-compose.yml group by group (ADMIN_*, etc.)
 				</section>
 
-				<section>
-					Automating data changes
+				<section data-background-color="#363a44">
+					<h1>Automate data changes</h1>
 				</section>
 
 				<section>
@@ -343,8 +484,8 @@
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
 				hash: true,
-				width: '100%',
-				height: '100%',
+				// width: '100%',
+				// height: '100%',
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
