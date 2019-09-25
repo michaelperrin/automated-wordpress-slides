@@ -212,6 +212,7 @@
 						<li class="fragment">Streamline team work</li>
 						<li class="fragment">Faster deployments (no "in between" state).</li>
 						<li class="fragment">"Cloud-ready".</li>
+						<li class="fragment">Isolation: easy to work on several projects.</li>
 					</ul>
 
 					<aside class="notes">
@@ -220,6 +221,8 @@
 						Version consistency: across developers and environments, no "it works for me effect". It can also be the PHP conf (max file size).
 						Easy versioning: we only version what's needed
 						Easier team work: work is replicated everywhere. No plugin to install manually, etc. Everyone is on the same page.
+
+						Isolation: several projects can be hosted on the same server
 					</aside>
 				</section>
 
@@ -252,7 +255,7 @@
 				</section>
 
 				<section class="what-is-docker">
-					<h2>Quick introduction</h2>
+					<h2>Quick introduction on Docker</h2>
 
 					<ul>
 						<li class="fragment">"Lightweight virtualisation".</li>
@@ -348,10 +351,14 @@
 					Note: WP code is hidden
 				</section>
 
-				<section data-markdown>
-					One command: `docker-compose up -d`
+				<section>
+					<h2>Let's run it</h2>
 
-					Result: TODO: screenshot
+					One command to start Docker containers:
+
+					<pre><code class="shell">docker-compose up -d</code></pre>
+
+					PHP + WordPress, MySQL and Nginx are now installed, and up and running.
 				</section>
 
 				<section>
@@ -378,7 +385,7 @@
 				<section data-markdown>
 					## Adding services is easy
 
-					Example with phpMyAdmin:
+					Want phpMyAdmin? Update *docker-compose.yml*:
 
 					```yaml
 					services:
@@ -392,7 +399,7 @@
 									- 8082:80
 					```
 
-					Start containers again and phpMyAdmin will be available at http://localhost:8082.
+					Access it at http://localhost:8082
 				</section>
 
 				<section data-background-color="#363a44">
@@ -556,8 +563,82 @@ toolbox:
 						<li>Add page</li>
 						<li>Add menu entries</li>
 						<li>Create user (? TO CHECK)</li>
+						<li>
+							Configure a plugin
+							<ul>
+								<li>Add a contact form (Contact Form 7)</li>
+								<li>Define MailChimp API key</li>
+							</ul>
+						</li>
 						<li>Create a contact form (no clicks again)</li>
 					</ul>
+
+					<aside class="notes">
+						The QA person doesn't know very well WordPress and I don't want to either give instructions
+						or configure myself on each environment / forget to configure things.
+					</aside>
+				</section>
+
+				<section>
+					<h2>WP-migrations plugin</h2>
+
+					<ul>
+						<li class="fragment" style="margin-bottom: 0.7em">
+							<img data-src="images/logos/doctrine-logo.svg" alt="" style="box-shadow: none; float: right; height: 100px; margin: -10px 0 0 30px;">
+							Inspired by <a href="https://www.doctrine-project.org/projects/migrations.html">Doctrine Migrations</a> for PHP and SQL
+						</li>
+						<li class="fragment" style="margin-bottom: 0.7em">Runs user-defined migration files to describe data changes.</li>
+						<li class="fragment">Embeds a WP-CLI command to execute migrations.</li>
+					</ul>
+				</section>
+
+				<section data-markdown="slides/step3/migration-anatomy.md"></section>
+
+				<section>
+					<h2>Migration files</h2>
+
+					<ul>
+						<li>Stored in <code>wp-content/migrations</code> folder.</li>
+						<li>Only executed once.</li>
+						<li>Should be committed to version control.</li>
+					</ul>
+
+					TODO: show
+
+					<aside class="notes">
+						The command can be run as many times.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Benefits of migrations</h2>
+
+					<ul>
+						<li>Structural changes are versioned.</li>
+						<li>
+							Facilitate team work and easy to deploy.
+
+							<ul>
+								<li>No "in-between" state</li>
+								<li>Multi-environments (use env variable in migrations with <code>getenv()</code>!)</li>
+							</ul>
+						</li>
+						<li>Makes project work .</li>
+					</ul>
+
+					<p>
+						Downside: more work to do upfront
+					</p>
+
+					<aside class="notes">
+						That avoids forgetting things when deploying.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Example</h2>
+
+					Add a page and add its menu entry.
 				</section>
 
 				<section>
