@@ -128,5 +128,13 @@ section.has-dark-background {
                 font-weight: bold;
             }
         }
+
+        ul {
+            li {
+                ul {
+                    font-size: 80%;
+                }
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
-### Setting up Docker containers
+## Setting up Docker containers
 
-Create a `docker-compose.yml` file at the root of the project.
+`docker-compose.yml` file at the root of the project:
 
 ```yaml
 services:

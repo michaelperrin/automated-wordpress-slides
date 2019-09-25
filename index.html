@@ -193,7 +193,7 @@
 
 				<section>
 					<h2>
-						Benefits
+						Benefits of automation
 					</h2>
 
 					<p style="margin-bottom: 0">
@@ -208,8 +208,8 @@
 							<span class="fragment">→ Avoids « It works on my machine ¯\_(ツ)_/¯ ».</span>
 						</li>
 						<li class="fragment"><strong>Versioning</strong> of the project is enforced and made easy.</li>
-						<li class="fragment">CI/CD integration (Travis CI, Circle CI, etc.).</li>
-						<li class="fragment">Team work is streamlined.</li>
+						<li class="fragment">Continuous Integration and Deployment.</li>
+						<li class="fragment">Streamline team work</li>
 						<li class="fragment">Faster deployments (no "in between" state).</li>
 						<li class="fragment">"Cloud-ready".</li>
 					</ul>
@@ -235,7 +235,7 @@
 
 				<section class="three-automation-steps" data-background-color="#e2e7e9">
 					<h2>
-						What are are going to automate?
+						What are we going to automate?
 					</h2>
 
 					<ol>
@@ -275,7 +275,6 @@
 								</div>
 							</div>
 						</li>
-						<li class="fragment">It is also possible to build custom images.</li>
 						<li class="fragment">Rule of thumb: one service per container.</li>
 						<li class="fragment">Works on Linux, Windows, MacOS</li>
 					</ul>
@@ -293,8 +292,6 @@
 				</section>
 
 				<section data-markdown="slides/automating-infrastructure/docker-containers.md"></section>
-
-
 				<section data-markdown="slides/docker-compose.md"></section>
 				<section data-markdown="slides/docker-compose-wordpress.md"></section>
 				<section data-markdown="slides/docker-compose-database-1.md" data-transition="slide-in none"></section>
@@ -302,17 +299,23 @@
 				<section data-markdown="slides/docker-compose-webserver.md"></section>
 
 				<section>
-					Environments
+					<h2>.env file</h2>
 
-					TODO: schema Local -> QA -> Staging -> Production
+					<pre><code data-trim data-noescape>
+						MYSQL_ROOT_PASSWORD=my_root_password
+						MYSQL_DATABASE=wordpress
+						MYSQL_USER=wordpress
+						MYSQL_USER_PASSWORD=wordpress_pwd
+						WEBSERVER_PORT=8000
+					</code></pre>
 				</section>
 
 				<section>
-					.env
+					<h2>Environment variables</h2>
 
 					<ul>
 						<li>
-							Place to store verything that is or may be specific to an environment. Example:
+							Specific to an environment. Examples:
 
 							<ul>
 								<li>Database parameters</li>
@@ -321,8 +324,15 @@
 							</ul>
 						</li>
 						<li>May contain sensitive data.</li>
-						<li>This file is <strong>not</strong> commited.</li>
-						<li>Environment variables can be set in CI/CD tools (Travis CI, TeamCity, Gitlab CI, etc.)</li>
+						<li>
+							Can be set in:
+
+							<ul>
+								<li>A <code>.env</code> file</li>
+								<li>In CI/CD tools like Travis, TeamCity, etc.</li>
+							</ul>
+						</li>
+						<li><strong>Not commited</strong> in the project.</li>
 					</ul>
 
 					<aside class="notes">
@@ -331,19 +341,9 @@
 				</section>
 
 				<section>
-					Show file hierarchy
+					TODO: Show file hierarchy
 
 					<img src="images/step-1-file-tree.png" alt="">
-
-					TODO: add .env and wp-content
-
-					An environment variable is a variable whose value is set outside the program, typically through functionality built into
-					the operating system or microservice. An environment variable is made up of a name/value pair, and any number may be
-					created and available for reference at a point in time.
-					https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa
-
-					Tell that this is a good practice used for Node / Webpack, Symfony, Laravel
-					TODO: talk now about TeamCity and Gitlab (https://docs.gitlab.com/ee/ci/variables/)?
 
 					Note: WP code is hidden
 				</section>
@@ -402,18 +402,16 @@
 				<section data-markdown>
 					## Ditch the wizard
 
-					What we want to do
-
 					* Add default admin user.
-					* Configure database parameters (aka edit `wp-config.php`).
-					* Posts URL structure.
-					* Set language
+					* Configure database parameters.
+					* Define posts URL structure.
+					* Set language.
 
 					Note: there is nothing bad about that wizard, it's just that we can't reproduce the steps.
 				</section>
 
 				<section>
-					<h2>What is WP-CLI</h2>
+					<h2>WP-CLI</h2>
 
 					<div style="display: flex; width: 100%;">
 						<div>
@@ -431,7 +429,7 @@
 				</section>
 
 				<section>
-					<h2>Configure WordPress with WP-CLI</h2>
+					<h2>Useful WP-CLI commands</h2>
 
 					<div>
 						Generate a <em>wp-config.php</em> file with DB parameters:
@@ -456,14 +454,41 @@
 				</section>
 
 				<section>
-					Configure with WP-CLI.
+					<h2>Making use of WP-CLI</h2>
 
-					Show docker-compose entry with env vars.
+					Update <code>docker-compose.yml</code>:
 
-					Note: use of WORDPRESS_CONFIG_EXTRA works too. But it can't be modified.
-					Note: we have introduced some new env vars, but some of them are shared -> show updated .env file
-					Note: some variables are hard-coded (eg. locale, title, etc.) in docker-compose.yml instead of being set in the .env
-					because they don't depend on the environment.
+					<pre>
+						<code class="yaml" data-trim data-noescape>
+toolbox:
+  image: michaelperrin/wordpress-toolbox
+  volumes:
+    - wordpress_data:/wordpress
+    - ./Makefile:/scripts/Makefile
+  depends_on:
+    - database
+  environment:
+    MYSQL_HOST: ${MYSQL_HOST}
+    MYSQL_DATABASE: ${MYSQL_DATABASE}
+    MYSQL_USER: ${MYSQL_USER}
+    MYSQL_USER_PASSWORD: ${MYSQL_USER_PASSWORD}
+    WORDPRESS_ADMIN_EMAIL: ${WORDPRESS_ADMIN_EMAIL}
+    WORDPRESS_ADMIN_PASSWORD: ${WORDPRESS_ADMIN_PASSWORD}
+    WORDPRESS_ADMIN_USER: ${WORDPRESS_ADMIN_USERNAME}
+    WORDPRESS_DOMAIN_NAME: ${WORDPRESS_DOMAIN_NAME}
+    WORDPRESS_WEBSITE_URL: ${WORDPRESS_WEBSITE_URL}
+    WORDPRESS_LOCALE: en_US
+    WORDPRESS_WEBSITE_POST_URL_STRUCTURE: "/%year%/%monthnum%/%day%/%postname%/"
+    WORDPRESS_WEBSITE_TITLE: "My beautiful website"
+						</code>
+					</pre>
+
+					<aside class="notes">
+						Note: use of WORDPRESS_CONFIG_EXTRA works too. But it can't be modified.
+						Note: we have introduced some new env vars, but some of them are shared -> show updated .env file
+						Note: some variables are hard-coded (eg. locale, title, etc.) in docker-compose.yml instead of being set in the .env
+						because they don't depend on the environment.
+					</aside>
 				</section>
 
 

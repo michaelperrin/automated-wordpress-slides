@@ -442,3 +442,6 @@ body {
 .reveal section.three-automation-steps ol {
   line-height: 2;
   font-weight: bold; }
+
+.reveal section ul li ul {
+  font-size: 80%; }
