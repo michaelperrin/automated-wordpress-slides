@@ -28,11 +28,24 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section data-background-color="#e2e7e9">
+				<section data-background-color="#e2e7e9" class="front-slide">
 					<h1 class="title">
-						WordPress,<br>
-						<small>The automated way</small>
+						WordPress,
+						<br>
+						the automated way
 					</h1>
+
+					<div class="author">Michaël Perrin</div>
+
+					<img src="images/logo-wordcamp-vancouver-gray.svg" alt="">
+
+					<aside class="notes">
+						What this talk be about
+
+						Note:
+						Some parts will be shown quickly.
+						You don't need all parts.
+					</aside>
 				</section>
 
 				<!-- <section class="front" data-background-color="#e2e7e9">
@@ -90,15 +103,6 @@
 						</div>
 					</div>
 				</section> -->
-
-				<section>
-					What this talk be about
-
-					Note:
-					Some parts will be shown quickly.
-					You don't need all parts.
-
-				</section>
 
 				<section data-background-color="#363a44">
 					<h1>A typical WordPress set-up</h1>
@@ -181,60 +185,33 @@
 					<img src="images/typing-cat.gif" alt="">
 				</section>
 
-				<section>
-					<ul>
-						<li>
-							5-minutes install -> 30 seconds install<br>
-							<img data-src="images/5-min-install-cropped.png" alt="">
-						</li>
-						<li><em>No clicks whatsoever</em>™️ install</li>
-					</ul>
-				</section>
+				<!-- <section>
+					<h2>No clicks whatsoever™️ installation</h2>
 
-				<section>
-					<h2>
-						Benefits of automation
-					</h2>
+					<div style="display: flex">
+						<div>
+							<img src="images/turtle.svg" alt="" style="display: block; height: 40px; box-shadow: none;">
+							5-minute install
+						</div>
 
-					<p style="margin-bottom: 0">
-						Why do we want to automate things?
-					</p>
-					<p class="fragment" style="font-size: 0.5em; margin-top: 0">Because developers are lazy? 🤔</p>
+						<div>
+							→
+						</div>
 
-					<ul>
-						<li class="fragment">Multi-<strong>environments</strong> (staging, QA, production, …)</li>
-						<li class="fragment">
-							PHP and MySQL configuration &amp; version <strong>consistency</strong>.<br>
-							<span class="fragment">→ Avoids « It works on my machine ¯\_(ツ)_/¯ ».</span>
-						</li>
-						<li class="fragment"><strong>Versioning</strong> of the project is enforced and made easy.</li>
-						<li class="fragment">Continuous Integration and Deployment.</li>
-						<li class="fragment">Streamline team work</li>
-						<li class="fragment">Faster deployments (no "in between" state).</li>
-						<li class="fragment">"Cloud-ready".</li>
-						<li class="fragment">Isolation: easy to work on several projects.</li>
-					</ul>
+						<div>
+							<img src="images/rabbit.svg" alt="" style="display: block; height: 40px; box-shadow: none;">
+							5-minute install
+						</div>
+					</div>
+
+					<div>
+						<img src="images/stopwatch.svg" alt="" style="height: 60px; box-shadow: none;">
+					</div>
 
 					<aside class="notes">
-						We will see in more details these benefits.
-
-						Version consistency: across developers and environments, no "it works for me effect". It can also be the PHP conf (max file size).
-						Easy versioning: we only version what's needed
-						Easier team work: work is replicated everywhere. No plugin to install manually, etc. Everyone is on the same page.
-
-						Isolation: several projects can be hosted on the same server
+						It's not only about speed
 					</aside>
-				</section>
-
-				<section>
-					<h2>Development is more…</h2>
-
-					<ul>
-						<li class="fragment">Reliable</li>
-						<li class="fragment">Consistent</li>
-						<li class="fragment">Predictable</li>
-					</ul>
-				</section>
+				</section> -->
 
 				<section class="three-automation-steps" data-background-color="#e2e7e9">
 					<h2>
@@ -246,6 +223,43 @@
 						<li class="fragment">WordPress configuration.</li>
 						<li class="fragment">WordPress data.</li>
 					</ol>
+				</section>
+
+				<section>
+					<h2>
+						Benefits of automation
+					</h2>
+
+					<p style="margin-bottom: 0; margin-top: 0; font-weight: 700">
+						Why do we want to automate things?
+					</p>
+					<p class="fragment" style="font-size: 0.5em; margin-top: 0">Because developers are lazy? 🤔</p>
+
+					<ul style="margin-left: 2em">
+						<li class="fragment"><strong>Multi-environments</strong> (staging, QA, production, …)</li>
+						<li class="fragment">
+							Server configuration <strong>consistency</strong>.<br>
+							<ul>
+								<li class="fragment">Avoids « It works on my machine ¯\_(ツ)_/¯ ».</li>
+							</ul>
+						</li>
+						<li class="fragment">Easy <strong>versioning</strong> of the project.</li>
+						<li class="fragment">Continuous Integration and Deployment.</li>
+						<li class="fragment">Streamline team work.</li>
+						<li class="fragment">Faster and predictable deployments.</li>
+						<li class="fragment">"Cloud-ready".</li>
+					</ul>
+
+					<aside class="notes">
+						We will see in more details these benefits.
+
+						Version consistency: across developers and environments, no "it works for me effect". It can also be the PHP conf (max file size).
+						Easy versioning: we only version what's needed
+						Easier team work: work is replicated everywhere. No plugin to install manually, etc. Everyone is on the same page.
+						Predictable: (no "in between" state)
+
+						Isolation: several projects can be hosted on the same server
+					</aside>
 				</section>
 
 				<section data-background-color="#363a44" data-markdown="slides/automating-infrastructure/index.md"></section>
@@ -279,7 +293,7 @@
 							</div>
 						</li>
 						<li class="fragment">Rule of thumb: one service per container.</li>
-						<li class="fragment">Works on Linux, Windows, MacOS</li>
+						<li class="fragment">Works on Linux, Windows, MacOS.</li>
 					</ul>
 				</section>
 
@@ -344,42 +358,48 @@
 				</section>
 
 				<section>
-					TODO: Show file hierarchy
+					<h2>Project structure</h2>
 
-					<img src="images/step-1-file-tree.png" alt="">
+					<img src="images/tree-1.png" alt="">
 
-					Note: WP code is hidden
+					<aside class="notes">
+						WP code is abstracted/hidden
+
+						TODO: tree 1bis avec le theme / plugins?
+					</aside>
 				</section>
 
-				<section>
+				<section class="docker-up">
 					<h2>Let's run it</h2>
 
 					One command to start Docker containers:
 
 					<pre><code class="shell">docker-compose up -d</code></pre>
 
-					PHP + WordPress, MySQL and Nginx are now installed, and up and running.
+					<p class="fragment" style="margin-top: 1.2em; margin-bottom: 0;">
+						Up and running:
+					</p>
+					<div style="display: flex;" class="result">
+						<div style="display: flex; align-items: center" class="fragment">
+							<img src="images/logos/php-logo.svg" alt="">
+							<div style="color: #888; margin-left: 10px; margin-right: 10px;">
+								+
+							</div>
+							<img src="images/logos/wordpress-logo.svg" alt="">
+						</div>
+
+						<div class="fragment">
+							<img src="images/logos/mysql-logo.svg" alt="">
+						</div>
+
+						<div class="fragment">
+							<img src="images/logos/nginx-small.png" alt="">
+						</div>
+					</div>
 				</section>
 
 				<section>
-					More can be done. Examples:
-
-					Note: this is the demo repository that I will provide.
-				</section>
-
-				<section>
-					<h2>What we get</h2>
-
-					<ul>
-						<li>Not error prone (clicks are...human)</li>
-						<li>Fast</li>
-						<li>Consistent configuration (same exact PHP / MySQL versions)</li>
-						<li>Versioned infrastructure.</li>
-						<li>Easy to update configuration for all environmnents.</li>
-						<li>Easy to deploy to any hosting providers.</li>
-						<li>Easy to deploy to reproduce (integrated into a CI/CD).</li>
-						<li>and... one command to setup the project.</li>
-					</ul>
+					<img src="images/wp-wizard/wp-wizard-1.png" alt="">
 				</section>
 
 				<section data-markdown>
@@ -402,19 +422,42 @@
 					Access it at http://localhost:8082
 				</section>
 
+				<section>
+					<h2>What we get</h2>
+
+					<ul>
+						<li>Not error prone (clicks are...human)</li>
+						<li>Fast</li>
+						<li>Consistent configuration (same exact PHP / MySQL versions)</li>
+						<li>Versioned infrastructure.</li>
+						<li>Easy to update configuration for all environmnents.</li>
+						<li>Easy to deploy to any hosting providers.</li>
+						<li>Easy to deploy to reproduce (integrated into a CI/CD).</li>
+						<li>and... one command to setup the project.</li>
+					</ul>
+				</section>
+
 				<section data-background-color="#363a44">
 					<h1>Automate WordPress configuration</h1>
 				</section>
 
-				<section data-markdown>
-					## Ditch the wizard
+				<section>
+					<h2>
+						Ditch the wizard
+					</h2>
 
-					* Add default admin user.
-					* Configure database parameters.
-					* Define posts URL structure.
-					* Set language.
+					<ul>
+						<li>Set the language.</li>
+						<li>Add default admin user.</li>
+						<li>Configure database parameters.</li>
+						<li>Define posts URL structure.</li>
+						<li>Choose a theme.</li>
+						<li>Install plugins.</li>
+					</ul>
 
-					Note: there is nothing bad about that wizard, it's just that we can't reproduce the steps.
+					<aside class="notes">
+						Note: there is nothing bad about that wizard, it's just that we can't reproduce the steps.
+					</aside>
 				</section>
 
 				<section>
@@ -611,6 +654,12 @@ toolbox:
 				</section>
 
 				<section>
+					<h2>Example</h2>
+
+					Add a page and add its menu entry.
+				</section>
+
+				<section>
 					<h2>Benefits of migrations</h2>
 
 					<ul>
@@ -633,12 +682,6 @@ toolbox:
 					<aside class="notes">
 						That avoids forgetting things when deploying.
 					</aside>
-				</section>
-
-				<section>
-					<h2>Example</h2>
-
-					Add a page and add its menu entry.
 				</section>
 
 				<section>

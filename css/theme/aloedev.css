@@ -425,6 +425,34 @@ body {
     font-style: normal;
     padding-left: 20px; }
 
+.reveal section.front-slide {
+  text-align: center;
+  line-height: 1; }
+  .reveal section.front-slide h1 {
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: left; }
+  .reveal section.front-slide .author {
+    color: #505052;
+    text-align: left;
+    font-weight: bold; }
+  .reveal section.front-slide img {
+    display: inline-block;
+    margin-top: 80px;
+    box-shadow: none;
+    height: 120px;
+    background: none; }
+
+.reveal section.docker-up .result {
+  display: flex;
+  align-items: center; }
+  .reveal section.docker-up .result > div {
+    margin-right: 30px; }
+  .reveal section.docker-up .result img {
+    height: 50px;
+    box-shadow: none; }
+
 .reveal section.what-is-docker .docker-logo {
   height: 60px;
   box-shadow: none; }

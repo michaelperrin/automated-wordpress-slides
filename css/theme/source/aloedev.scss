@@ -101,6 +101,48 @@ section.has-dark-background {
             }
         }
 
+        &.front-slide {
+            text-align: center;
+            line-height: 1;
+
+            h1 {
+                font-size: 2em;
+                font-weight: 700;
+                line-height: 1;
+                text-align: left;
+            }
+
+            .author {
+                color: #505052;
+                text-align: left;
+                font-weight: bold;
+            }
+
+            img {
+                display: inline-block;
+                margin-top: 80px;
+                box-shadow: none;
+                height: 120px;
+                background: none;
+            }
+        }
+
+        &.docker-up {
+            .result {
+                display: flex;
+                align-items: center;
+
+                > div {
+                    margin-right: 30px;
+                }
+
+                img {
+                    height: 50px;
+                    box-shadow: none;
+                }
+            }
+        }
+
         &.what-is-docker {
             .docker-logo {
                 height: 60px;
