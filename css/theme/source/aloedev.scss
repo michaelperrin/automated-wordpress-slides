@@ -29,7 +29,7 @@ $headingTextShadow: none;
 $headingLetterSpacing: normal;
 $headingTextTransform: uppercase;
 $headingFontWeight: 600;
-$linkColor: #2a76dd;
+$linkColor: #046d8f;
 $linkColorHover: lighten( $linkColor, 15% );
 $selectionBackgroundColor: lighten( $linkColor, 25% );
 
@@ -168,6 +168,51 @@ section.has-dark-background {
             ol {
                 line-height: 2;
                 font-weight: bold;
+            }
+        }
+
+        &.who-am-i {
+            .tronche {
+                text-align: right;
+
+                img {
+                    display: inline-block;
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 60px;
+                    margin-right: 80px;
+                    margin-top: 20px;
+                }
+            }
+
+            .two-col {
+                display: flex;
+
+                > div {
+                    flex: 1 1 auto;
+                }
+            }
+
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .logos {
+                text-align: center;
+
+                img {
+                    box-shadow: none;
+                    height: 30px;
+                }
+            }
+
+            .name {
+                margin: 0;
+                font-size: 140%;
+                font-weight: 600;
+                line-height: 1;
             }
         }
 

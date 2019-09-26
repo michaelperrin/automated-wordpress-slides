@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="css/theme/aloedev.css">
 
 		<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap" rel="stylesheet">
-
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
@@ -37,7 +37,7 @@
 
 					<div class="author">Michaël Perrin</div>
 
-					<img src="images/logo-wordcamp-vancouver-gray.svg" alt="">
+					<img data-src="images/logo-wordcamp-vancouver-gray.svg" alt="">
 
 					<aside class="notes">
 						What this talk be about
@@ -48,6 +48,39 @@
 					</aside>
 				</section>
 
+				<section class="who-am-i">
+					<div class="two-col">
+						<div class="tronche">
+							<img data-src="images/tronche.jpg" alt="">
+						</div>
+						<div class="info">
+							<p class="name">
+								Michaël Perrin
+							</p>
+
+							<ul>
+								<li style="margin-bottom: 1em;">Full-stack developer</li>
+
+								<li style="margin-bottom: 1em;">
+									PHP / Symfony, React, Elasticsearch, …
+									<div>and WordPress</div>
+								</li>
+
+								<li style="margin-bottom: 1em;">
+									<a href="https://twitter.com/michael_perrin">
+										<i aria-hidden="true" class="fa fa-twitter"></i>
+										michael_perrin
+									</a>
+								</li>
+
+								<li style="font-size: 80%">
+									#paris #houston #hiking #belgianbeers #…
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
 				<!-- <section class="front" data-background-color="#e2e7e9">
 					<div class="desk">
 						<div class="desk-container">
@@ -55,7 +88,7 @@
 							</div>
 						</div>
 
-						<img src="images/light.svg" class="light" alt="">
+						<img data-src="images/light.svg" class="light" alt="">
 
 						<div class="laptop-container">
 							<div class="laptop">
@@ -79,12 +112,12 @@
 								</div>
 
 								<div class="keyboard">
-									<img src="images/laptop-keyboard.svg" alt="">
+									<img data-src="images/laptop-keyboard.svg" alt="">
 								</div>
 							</div>
 						</div>
 
-						<img src="images/vaxter.svg" class="vaxter" alt="">
+						<img data-src="images/vaxter.svg" class="vaxter" alt="">
 
 						<div class="intro">
 							<h1>Michaël Perrin</h1>
@@ -182,7 +215,7 @@
 				<section data-markdown="slides/wp-standard-install.md"></section>
 
 				<section>
-					<img src="images/typing-cat.gif" alt="">
+					<img data-src="images/typing-cat.gif" alt="">
 				</section>
 
 				<!-- <section>
@@ -190,7 +223,7 @@
 
 					<div style="display: flex">
 						<div>
-							<img src="images/turtle.svg" alt="" style="display: block; height: 40px; box-shadow: none;">
+							<img data-src="images/turtle.svg" alt="" style="display: block; height: 40px; box-shadow: none;">
 							5-minute install
 						</div>
 
@@ -199,13 +232,13 @@
 						</div>
 
 						<div>
-							<img src="images/rabbit.svg" alt="" style="display: block; height: 40px; box-shadow: none;">
+							<img data-src="images/rabbit.svg" alt="" style="display: block; height: 40px; box-shadow: none;">
 							5-minute install
 						</div>
 					</div>
 
 					<div>
-						<img src="images/stopwatch.svg" alt="" style="height: 60px; box-shadow: none;">
+						<img data-src="images/stopwatch.svg" alt="" style="height: 60px; box-shadow: none;">
 					</div>
 
 					<aside class="notes">
@@ -265,7 +298,7 @@
 				<section data-background-color="#363a44" data-markdown="slides/automating-infrastructure/index.md"></section>
 
 				<section>
-					<img src="images/logos/docker-logo.svg" alt="Docker" style="box-shadow: none; display: block; margin-left: auto; margin-right: auto;">
+					<img data-src="images/logos/docker-logo.svg" alt="Docker" style="box-shadow: none; display: block; margin-left: auto; margin-right: auto;">
 				</section>
 
 				<section class="what-is-docker">
@@ -360,7 +393,7 @@
 				<section>
 					<h2>Project structure</h2>
 
-					<img src="images/tree-1.png" alt="">
+					<img data-src="images/tree-1.png" alt="">
 
 					<aside class="notes">
 						WP code is abstracted/hidden
@@ -381,25 +414,25 @@
 					</p>
 					<div style="display: flex;" class="result">
 						<div style="display: flex; align-items: center" class="fragment">
-							<img src="images/logos/php-logo.svg" alt="">
+							<img data-src="images/logos/php-logo.svg" alt="">
 							<div style="color: #888; margin-left: 10px; margin-right: 10px;">
 								+
 							</div>
-							<img src="images/logos/wordpress-logo.svg" alt="">
+							<img data-src="images/logos/wordpress-logo.svg" alt="">
 						</div>
 
 						<div class="fragment">
-							<img src="images/logos/mysql-logo.svg" alt="">
+							<img data-src="images/logos/mysql-logo.svg" alt="">
 						</div>
 
 						<div class="fragment">
-							<img src="images/logos/nginx-small.png" alt="">
+							<img data-src="images/logos/nginx-small.png" alt="">
 						</div>
 					</div>
 				</section>
 
 				<section>
-					<img src="images/wp-wizard/wp-wizard-1.png" alt="">
+					<img data-src="images/wp-wizard/wp-wizard-1.png" alt="">
 				</section>
 
 				<section data-markdown>
@@ -656,7 +689,44 @@ toolbox:
 				<section>
 					<h2>Example</h2>
 
-					Add a page and add its menu entry.
+					<pre><code class="php" data-trim data-noescape style="font-size: 85%; line-height: 1.2; max-height: 450px;">
+						class Migration201909221755 implements MigrationInterface {
+						    use MigrationUtilitiesTrait;
+
+						    public function execute() {
+						        $pageData = [
+						            'post_name'     => 'about', // Permalink
+						            'post_title'    => 'About us',
+						            'post_content'  => '',
+						            'post_status'   => 'publish',
+						            'post_author'   => 1,
+						            'post_type'     => 'page',
+						            'menu_order'    => 1,
+						        ];
+
+						        $postId = wp_insert_post($pageData);
+
+						        $this->addToMenu($postId, 'Contact');
+						    }
+						}
+
+					</code></pre>
+				</section>
+
+				<section data-transition="slide-in none">
+					<h2>Run the migrations</h2>
+
+					<pre><code class="shell">make wordpress_migrations_execute</code></pre>
+
+					<img src="images/cli-migration-1.png" alt="">
+				</section>
+
+				<section data-transition="slide-out none">
+					<h2>Run the migrations, again</h2>
+
+					<pre><code class="shell">make wordpress_migrations_execute</code></pre>
+
+					<img src="images/cli-migration-2.png" alt="">
 				</section>
 
 				<section>
@@ -685,6 +755,10 @@ toolbox:
 				</section>
 
 				<section>
+					<img data-src="images/admin-migrations.png" alt="">
+				</section>
+
+				<section>
 					Deploying with Docker.
 
 					The idea is to build a new image each time. That's fine because we can reproduce builds automatically.
@@ -699,31 +773,29 @@ toolbox:
 				</section>
 
 				<section>
-					Real demo: clone repository, run command, show that it works
-				</section>
+					<h2>Final tree structure</h2>
 
-				<section>
-					The plugin can be used without any of the the first steps.
+					<div style="display: flex; align-items: center;">
+						<div style="margin-right: 60px;">
+							<img data-src="images/step3-filetree.png" alt="" style="max-height: 460px;">
+						</div>
 
-					Migrations are in the `wp-content` folder.
-				</section>
+						<div>
+							<ul>
+								<li>Only what <strong>our</strong> project needs.</li>
+								<li>Easy versioning.</li>
+								<li>Includes infrastructure &amp; all automations.</li>
+							</ul>
+						</div>
+					</div>
 
-				<section>
-					Plugin will soon be released officially.
-
-					Admin interface to see the migrations that were run.
+					<aside class="notes">
+						Easy versioning: no useless files.
+					</aside>
 				</section>
 
 				<section>
 					<img data-src="images/admin-migrations.png" alt="">
-				</section>
-
-				<section>
-					You can clone the repository at .... run the commands
-
-					Thanks.
-					Twitter
-					Link to slides or website.
 				</section>
 
 				<section>
