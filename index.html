@@ -70,10 +70,6 @@
                                         michael_perrin
                                     </a>
                                 </li>
-
-                                <li style="font-size: 80%">
-                                    #paris #houston #hiking #belgianbeers #…
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -335,7 +331,9 @@
                         <li>Very handy for local development and for servers.</li>
                         <li>Documents and versions the infrastructure of the project.</li>
                         <li>Allows to install any version of any dependency.</li>
+                        <li>Easy to update configuration for all environmnents.</li>
                         <li>Isolation of projects.</li>
+                        <li>Easy to deploy.</li>
                     </ul>
                 </section>
 
@@ -343,7 +341,8 @@
                 <section data-markdown="slides/docker-compose.md"></section>
                 <section data-markdown="slides/docker-compose-wordpress.md"></section>
                 <section data-markdown="slides/docker-compose-database-1.md" data-transition="slide-in none"></section>
-                <section data-markdown="slides/docker-compose-database-2.md" data-transition="slide-out none"></section>
+                <section data-markdown="slides/docker-compose-database-2.md" data-transition="none"></section>
+                <section data-markdown="slides/docker-compose-database-3.md" data-transition="slide-out none"></section>
                 <section data-markdown="slides/docker-compose-webserver.md"></section>
 
                 <section>
@@ -453,7 +452,7 @@
                     Access it at http://localhost:8082
                 </section>
 
-                <section>
+                <!-- <section>
                     <h2>What we get</h2>
 
                     <ul>
@@ -466,7 +465,7 @@
                         <li>Easy to deploy to reproduce (integrated into a CI/CD).</li>
                         <li>and... one command to setup the project.</li>
                     </ul>
-                </section>
+                </section> -->
 
                 <section data-background-color="#363a44">
                     <h1>Automate WordPress configuration</h1>
@@ -487,6 +486,7 @@
                     </ul>
 
                     <aside class="notes">
+                        Let's go further!
                         Note: there is nothing bad about that wizard, it's just that we can't reproduce the steps.
                     </aside>
                 </section>
@@ -535,12 +535,26 @@
                 </section>
 
                 <section>
-                    <h2>Making use of WP-CLI</h2>
+                    <h2>How to install</h2>
 
-                    Update <code>docker-compose.yml</code>:
+                    <p>
+                        Requirements for running WP-CLI:
+                    </p>
+
+                    <ul>
+                        <li>A PHP installation.</li>
+                        <li>Installing it (on every environment).</li>
+                        <li>Access to the WordPress directory.</li>
+                    </ul>
+
+                    <p class="fragment">Let's use a Docker container!</p>
+                </section>
+
+                <section>
+                    <h2>WP-CLI in a Docker container</h2>
 
                     <pre>
-                        <code class="yaml" data-trim data-noescape>
+                        <code class="yaml" data-trim data-noescape style="font-size: 85%; line-height: 1.2; max-height: 450px;">
 toolbox:
   image: michaelperrin/wordpress-toolbox
   volumes:
@@ -565,6 +579,8 @@ toolbox:
                     </pre>
 
                     <aside class="notes">
+                        I created a public Docker image that embeds WP-CLI and runs Makefile.
+
                         Note: use of WORDPRESS_CONFIG_EXTRA works too. But it can't be modified.
                         Note: we have introduced some new env vars, but some of them are shared -> show updated .env file
                         Note: some variables are hard-coded (eg. locale, title, etc.) in docker-compose.yml instead of being set in the .env
@@ -572,20 +588,16 @@ toolbox:
                     </aside>
                 </section>
 
-
                 <section>
-                    We don't want to install PHP and WP-CLI on every server.
-                    We want to run commands with a Makefile.
+                    <h2>Makefile</h2>
 
-                    I created a public Docker image that embeds WP-CLI and runs Makefile.
-                </section>
+                    <ul>
+                        <li>A file containing a set of scripts grouped as tasks.</li>
+                        <li>Abstracts and groups commands.</li>
+                        <li>The file is versioned in the project.</li>
+                    </ul>
 
-                <section data-markdown>
-                    ## Makefile
-
-                    What are Makefiles?
-
-                    ```Makefile
+                    <pre><code class="Makefile" data-trim data-noescape>
                     task_one:
                         # ...
 
@@ -594,27 +606,48 @@ toolbox:
 
                     task_three: task_one task_two
                         # ...
-                    ```
+                    </code></pre>
 
-                    It's a file where we can define a set of scripts grouped as tasks.
-                    Allows us to abstract some commands, to make them easier to execute.
-                    Allows us to run several commands with one command (it's a script).
+                    Run: <code class="Shell">make task_one</code>
 
-                    Our first one: `make start` will run the project locally.
-
-
-                    We are going to add them to the project.
+                    <aside class="notes">
+                        The commands with Docker a long to type
+                    </aside>
                 </section>
 
                 <section>
-                    ## Step 2: result
+                    <h2>Makefile for our project</h2>
 
-                    We have a fully functional WordPress website. I can login with the admin user I defined.
-                    Screenshot.
+                    <pre><code class="Makefile" data-trim data-noescape style="font-size: 95%; line-height: 1.2; max-height: 450px;">
+                        install: start configure install_plugins set_theme
+
+                        start:
+                            docker-compose up -d
+
+                        stop:
+                            docker-compose stop
+
+                        configure:
+                            # ... (several WP-CLI commands)
+
+                        set_theme:
+                            docker-compose run --rm toolbox wp-cli theme activate my-simple-theme
+
+                        install_plugins:
+                            # ... (one WP-CLI command per plugin)
+                    </code></pre>
                 </section>
 
                 <section>
-                    Should I talk about php.ini? Mentioning it at the end?
+                    <h2>Let's try</h2>
+
+                    Only one command to install and run our new WordPress project!
+
+                    <pre><code class="Shell">make install</code></pre>
+
+                    <div class="fragment" style="text-align: center">
+                        <img data-src="images/step2-running.png" alt="" style="max-height: 300px">
+                    </div>
                 </section>
 
                 <section data-background-color="#363a44">
@@ -623,8 +656,8 @@ toolbox:
 
                 <section>
                     <h2>
-						Data migration examples
-					</h2>
+                        Data migration examples
+                    </h2>
 
                     <ul>
                         <li>Remove WordPress default content.</li>
@@ -767,20 +800,6 @@ toolbox:
 
                 <section>
                     <img data-src="images/admin-migrations.png" alt="">
-                </section>
-
-                <section>
-                    Deploying with Docker.
-
-                    The idea is to build a new image each time. That's fine because we can reproduce builds automatically.
-                </section>
-
-                <section>
-                    TODO
-                    Things I have not shown.
-
-                    * Access to database (phpMyAdmin or GUI).
-                    * Run Webpack inside theme to build a theme.
                 </section>
 
                 <section>

@@ -1,4 +1,4 @@
-<pre><code class="yml" data-line-numbers="1-2" data-trim data-noescape>
+<pre><code class="yml" data-line-numbers="6-10" data-trim data-noescape>
 database:
   image: mysql:5.7
   restart: always
@@ -12,6 +12,3 @@ database:
   ports:
     - 3306:3306
 </code></pre>
-
-Note:
-We don't want to commit credentials.
