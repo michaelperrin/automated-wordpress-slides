@@ -206,7 +206,24 @@
                     </aside>
                 </section>
 
-                <section data-markdown="slides/wp-standard-install.md"></section>
+                <section>
+                    <h2>…and more steps</h2>
+
+                    <ul>
+                        <li>Select the theme.</li>
+                        <li class="fragment">Install plugins.</li>
+                        <li class="fragment">
+                            Configure plugins in WordPress admin interface.
+                            <ul>
+                                <li class="fragment">Set API keys (eg. MailChimp, Google Maps, etc.)</li>
+                                <li class="fragment">Import data</li>
+                                <li class="fragment">…</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">Create pages for the theme templates.</li>
+                    </ul>
+
+                </section>
 
                 <section>
                     <img data-src="images/typing-cat.gif" alt="">
@@ -289,7 +306,9 @@
                     </aside>
                 </section>
 
-                <section data-background-color="#363a44" data-markdown="slides/automating-infrastructure/index.md"></section>
+                <section data-background-color="#363a44">
+                    <h1>Automating infrastructure setup</h1>
+                </section>
 
                 <section>
                     <img data-src="images/logos/docker-logo.svg" alt="Docker" style="box-shadow: none; display: block; margin-left: auto; margin-right: auto;">
@@ -337,13 +356,119 @@
                     </ul>
                 </section>
 
-                <section data-markdown="slides/automating-infrastructure/docker-containers.md"></section>
-                <section data-markdown="slides/docker-compose.md"></section>
-                <section data-markdown="slides/docker-compose-wordpress.md"></section>
-                <section data-markdown="slides/docker-compose-database-1.md" data-transition="slide-in none"></section>
-                <section data-markdown="slides/docker-compose-database-2.md" data-transition="none"></section>
-                <section data-markdown="slides/docker-compose-database-3.md" data-transition="slide-out none"></section>
-                <section data-markdown="slides/docker-compose-webserver.md"></section>
+                <section>
+                    <h2>
+                        Containers for WordPress
+                    </h2>
+
+                    <div style="text-align: center">
+                        <img src="images/docker-containers.svg" style="box-shadow: none">
+                    </div>
+                </section>
+
+                <section>
+                    <h2>
+                        Setting up Docker containers
+                    </h2>
+
+                    <code>docker-compose.yml</code> file at the root of the project:
+
+                    <pre><code class="yaml" data-trim data-noescape>
+services:
+  wordpress:
+    image: wordpress:5.2-php7.3-fpm-alpine
+    # ...
+
+  database:
+    image: mysql:5.7
+    # ...
+
+  webserver:
+    image: nginx:1.14-alpine
+    # ...
+                    </code></pre>
+                </section>
+
+                <section data-markdown>
+```yml
+wordpress:
+  image: wordpress:5.2-php7.3-fpm-alpine
+  links:
+    - database:mysql
+  volumes:
+    - wordpress_data:/var/www/html
+  restart: always
+```
+                </section>
+
+                <section data-transition="slide-in none">
+                    <pre><code class="yml" data-line-numbers="1-2" data-trim data-noescape>
+database:
+  image: mysql:5.7
+  restart: always
+  volumes:
+      - db_data:/var/lib/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    MYSQL_DATABASE: ${MYSQL_DATABASE}
+    MYSQL_USER: ${MYSQL_USER}
+    MYSQL_PASSWORD: ${MYSQL_USER_PASSWORD}
+  ports:
+    - 3306:3306
+                    </code></pre>
+
+
+                    <aside class="notes">
+                        We don't want to commit credentials.
+                    </aside>
+                </section>
+
+                <section data-transition="none">
+                    <pre><code class="yml" data-line-numbers="3" data-trim data-noescape>
+                    database:
+                      image: mysql:5.7
+                      restart: always
+                      volumes:
+                          - db_data:/var/lib/mysql
+                      environment:
+                        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+                        MYSQL_DATABASE: ${MYSQL_DATABASE}
+                        MYSQL_USER: ${MYSQL_USER}
+                        MYSQL_PASSWORD: ${MYSQL_USER_PASSWORD}
+                      ports:
+                        - 3306:3306
+                    </code></pre>
+                </section>
+
+                <section data-transition="slide-out none">
+                    <pre><code class="yml" data-line-numbers="6-10" data-trim data-noescape>
+                    database:
+                      image: mysql:5.7
+                      restart: always
+                      volumes:
+                          - db_data:/var/lib/mysql
+                      environment:
+                        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+                        MYSQL_DATABASE: ${MYSQL_DATABASE}
+                        MYSQL_USER: ${MYSQL_USER}
+                        MYSQL_PASSWORD: ${MYSQL_USER_PASSWORD}
+                      ports:
+                        - 3306:3306
+                    </code></pre>
+                </section>
+                <section>
+                    <pre><code class="yml" data-trim data-noescape>
+                        webserver:
+                          image: nginx:1.14-alpine
+                          links:
+                            - wordpress
+                          volumes:
+                            - wordpress_data:/var/www/html
+                            - ./docker/nginx/website.conf:/etc/nginx/conf.d/default.conf:ro
+                          ports:
+                            - ${WEBSERVER_PORT}:80
+                    </code></pre>
+                </section>
 
                 <section>
                     <h2>.env file</h2>
@@ -645,15 +770,27 @@ toolbox:
                 </section>
 
                 <section>
-                    <h2>Let's try</h2>
-
-                    Only one command to install and run our new WordPress project!
+                    <h2>One command</h2>
 
                     <pre><code class="Shell">make install</code></pre>
 
-                    <div class="fragment" style="text-align: center">
-                        <img data-src="images/step2-running.png" alt="" style="max-height: 300px">
-                    </div>
+                    <ul style="font-size: 80%">
+                        <li>Create Docker containers for WordPress, MySQL and Nginx.</li>
+                        <li>Initiate the WordPress database.</li>
+                        <li>Configure WordPress:</li>
+                            <ul>
+                                <li>Database parameters.</li>
+                                <li>Default WordPress user.</li>
+                                <li>Set language.</li>
+                                <li>Set default URL structure.</li>
+                            </ul>
+                        <li>Activate the custom `my-simple-theme` theme.</li>
+                        <li>Install plugins (Contact Form 7 and WP MailChimp as examples).</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <img data-src="images/step2-running.png" alt="">
                 </section>
 
                 <section data-background-color="#363a44">
@@ -697,7 +834,29 @@ toolbox:
                     </ul>
                 </section>
 
-                <section data-markdown="slides/step3/migration-anatomy.md"></section>
+                <section>
+                    <h2>
+                        Anatomy of a migration
+                    </h2>
+
+                    <pre><code class="php" data-trim data-noescape>
+                    &lt;?php
+
+                    namespace Migration;
+
+                    use WP\Migration\MigrationInterface;
+
+                    class Migration201909221755 implements MigrationInterface
+                    {
+                        public function execute()
+                        {
+                            // ...
+                        }
+                    }
+                    </code></pre>
+
+                    <aside class="notes">Each migration represents a data change.</aside>
+                </section>
 
                 <section>
                     <h2>Migration files</h2>

@@ -1,2 +1,0 @@
-# Automating infrastructure setup
-
