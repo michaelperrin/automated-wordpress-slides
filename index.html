@@ -566,14 +566,14 @@ database:
 
                     ```yaml
                     services:
-                        # ...
+                      # ...
 
-                        phpmyadmin:
-                            image: phpmyadmin/phpmyadmin
-                                links:
-                                    - database:db
-                                ports:
-                                    - 8082:80
+                      phpmyadmin:
+                        image: phpmyadmin/phpmyadmin
+                        links:
+                          - database:db
+                        ports:
+                          - 8082:80
                     ```
 
                     Access it at http://localhost:8082
