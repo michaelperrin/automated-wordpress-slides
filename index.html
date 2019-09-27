@@ -1,548 +1,546 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-		<title>WordPress, the automated way</title>
-
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/aloedev.css">
-
-		<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
-
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section data-background-color="#e2e7e9" class="front-slide">
-					<h1 class="title">
-						WordPress,
-						<br>
-						the automated way
-					</h1>
-
-					<div class="author">Michaël Perrin</div>
-
-					<img data-src="images/logo-wordcamp-vancouver-gray.svg" alt="">
-
-					<aside class="notes">
-						What this talk be about
-
-						Note:
-						Some parts will be shown quickly.
-						You don't need all parts.
-					</aside>
-				</section>
-
-				<section class="who-am-i">
-					<div class="two-col">
-						<div class="tronche">
-							<img data-src="images/tronche.jpg" alt="">
-						</div>
-						<div class="info">
-							<p class="name">
-								Michaël Perrin
-							</p>
-
-							<ul>
-								<li style="margin-bottom: 1em;">Full-stack developer</li>
-
-								<li style="margin-bottom: 1em;">
-									PHP / Symfony, React, Elasticsearch, …
-									<div>and WordPress</div>
-								</li>
-
-								<li style="margin-bottom: 1em;">
-									<a href="https://twitter.com/michael_perrin">
-										<i aria-hidden="true" class="fa fa-twitter"></i>
-										michael_perrin
-									</a>
-								</li>
-
-								<li style="font-size: 80%">
-									#paris #houston #hiking #belgianbeers #…
-								</li>
-							</ul>
-						</div>
-					</div>
-				</section>
-
-				<!-- <section class="front" data-background-color="#e2e7e9">
-					<div class="desk">
-						<div class="desk-container">
-							<div class="desk-table">
-							</div>
-						</div>
-
-						<img data-src="images/light.svg" class="light" alt="">
-
-						<div class="laptop-container">
-							<div class="laptop">
-								<div class="screen-container">
-									<div class="screen">
-										<div class="editor">
-											<div class="window">
-												<div class="title-bar">
-													<ul class="controls">
-														<li class="control control-close"></li>
-														<li class="control control-minimize"></li>
-														<li class="control control-full-screen"></li>
-													</ul>
-												</div>
-												<div class="content">
-													<pre id="typed"></pre>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="keyboard">
-									<img data-src="images/laptop-keyboard.svg" alt="">
-								</div>
-							</div>
-						</div>
-
-						<img data-src="images/vaxter.svg" class="vaxter" alt="">
-
-						<div class="intro">
-							<h1>Michaël Perrin</h1>
-
-							<div>Développeur web freelance.</div>
-
-							<div>
-								<div class="availability available">
-									<a href="#contact"><i class="fa fa-circle" aria-hidden="true"></i> Disponible</a>
-								</div>
-
-								<div class="location">
-									<i class="fa fa-map-marker" aria-hidden="true"></i> Paris, France
-								</div>
-							</div>
-						</div>
-					</div>
-				</section> -->
-
-				<section data-background-color="#363a44">
-					<h1>A typical WordPress set-up</h1>
-
-					<p class="fragment">aka. the "Famous 5-minute install"</p>
-
-					<aside class="notes">
-						This is where do we go from.
-						I will of course not go through every detail.
-					</aside>
-				</section>
-
-				<section data-transition="slide-in none">
-					<img data-src="images/wp-wizard/get-mamp.png" alt="">
-
-					<aside class="notes">
-						Download PHP, MySQL using any tool
-					</aside>
-				</section>
-
-				<section data-transition="none">
-					<img data-src="images/wp-wizard/cli.png" alt="">
-
-					<aside class="notes">
-						Or you may go the command line way
-					</aside>
-				</section>
-
-				<section data-transition="none">
-					<img data-src="images/wp-wizard/db-setup.png" alt="">
-
-					<aside class="notes">
-						Boring things to do in the database
-					</aside>
-				</section>
-
-				<section data-transition="none">
-					<img data-src="images/wp-wizard/get-wp.png" alt="">
-
-					<aside class="notes">
-						This is where do we go from
-					</aside>
-				</section>
-
-				<section data-transition="none">
-					<img data-src="images/wp-wizard/wp-wizard-1.png" alt="">
-
-					<aside class="notes">
-						This is where do we go from
-					</aside>
-				</section>
-
-				<section data-transition="none">
-					<img data-src="images/wp-wizard/wp-wizard-2.png" alt="">
-				</section>
-
-				<section data-transition="none">
-					<img data-src="images/wp-wizard/wp-wizard-3.png" alt="">
-
-					<aside class="notes">
-						Set up the database parameters
-					</aside>
-				</section>
-
-				<section data-transition="none">
-					<img data-src="images/wp-wizard/wp-wizard-4.png" alt="">
-				</section>
-
-				<section data-transition="slide-out none">
-					<img data-src="images/wp-wizard/wp-wizard-5.png" alt="">
-
-					<aside class="notes">
-						Choose parameters for the website
-					</aside>
-				</section>
-
-				<section data-markdown="slides/wp-standard-install.md"></section>
-
-				<section>
-					<img data-src="images/typing-cat.gif" alt="">
-				</section>
-
-				<!-- <section>
-					<h2>No clicks whatsoever™️ installation</h2>
-
-					<div style="display: flex">
-						<div>
-							<img data-src="images/turtle.svg" alt="" style="display: block; height: 40px; box-shadow: none;">
-							5-minute install
-						</div>
-
-						<div>
-							→
-						</div>
-
-						<div>
-							<img data-src="images/rabbit.svg" alt="" style="display: block; height: 40px; box-shadow: none;">
-							5-minute install
-						</div>
-					</div>
-
-					<div>
-						<img data-src="images/stopwatch.svg" alt="" style="height: 60px; box-shadow: none;">
-					</div>
-
-					<aside class="notes">
-						It's not only about speed
-					</aside>
-				</section> -->
-
-				<section class="three-automation-steps" data-background-color="#e2e7e9">
-					<h2>
-						What are we going to automate?
-					</h2>
-
-					<ol>
-						<li class="fragment">Infrastructure setup.</li>
-						<li class="fragment">WordPress configuration.</li>
-						<li class="fragment">WordPress data.</li>
-					</ol>
-				</section>
-
-				<section>
-					<h2>
-						Benefits of automation
-					</h2>
-
-					<p style="margin-bottom: 0; margin-top: 0; font-weight: 700">
-						Why do we want to automate things?
-					</p>
-					<p class="fragment" style="font-size: 0.5em; margin-top: 0">Because developers are lazy? 🤔</p>
-
-					<ul style="margin-left: 2em">
-						<li class="fragment"><strong>Multi-environments</strong> (staging, QA, production, …)</li>
-						<li class="fragment">
-							Server configuration <strong>consistency</strong>.<br>
-							<ul>
-								<li class="fragment">Avoids « It works on my machine ¯\_(ツ)_/¯ ».</li>
-							</ul>
-						</li>
-						<li class="fragment">Easy <strong>versioning</strong> of the project.</li>
-						<li class="fragment">Continuous Integration and Deployment.</li>
-						<li class="fragment">Streamline team work.</li>
-						<li class="fragment">Faster and predictable deployments.</li>
-						<li class="fragment">"Cloud-ready".</li>
-					</ul>
-
-					<aside class="notes">
-						We will see in more details these benefits.
-
-						Version consistency: across developers and environments, no "it works for me effect". It can also be the PHP conf (max file size).
-						Easy versioning: we only version what's needed
-						Easier team work: work is replicated everywhere. No plugin to install manually, etc. Everyone is on the same page.
-						Predictable: (no "in between" state)
-
-						Isolation: several projects can be hosted on the same server
-					</aside>
-				</section>
-
-				<section data-background-color="#363a44" data-markdown="slides/automating-infrastructure/index.md"></section>
-
-				<section>
-					<img data-src="images/logos/docker-logo.svg" alt="Docker" style="box-shadow: none; display: block; margin-left: auto; margin-right: auto;">
-				</section>
-
-				<section class="what-is-docker">
-					<h2>Quick introduction on Docker</h2>
-
-					<ul>
-						<li class="fragment">"Lightweight virtualisation".</li>
-						<li class="fragment">Each service runs in a separate Docker container.</li>
-						<li class="fragment">
-							Many services already have official images.<br>
-
-							<div class="logos">
-								<div class="fragment">
-									<img data-src="images/logos/php-logo.svg" alt="">
-								</div>
-								<div class="fragment">
-									<img data-src="images/logos/wordpress-logo.svg" alt="">
-								</div>
-								<div class="fragment">
-									<img data-src="images/logos/mysql-logo.svg" alt="">
-								</div>
-								<div class="fragment">
-									<img data-src="images/logos/phpmyadmin.png" alt="">
-								</div>
-							</div>
-						</li>
-						<li class="fragment">Rule of thumb: one service per container.</li>
-						<li class="fragment">Works on Linux, Windows, MacOS.</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Docker: benefits</h2>
-
-					<ul>
-						<li>Very handy for local development and for servers.</li>
-						<li>Documents and versions the infrastructure of the project.</li>
-						<li>Allows to install any version of any dependency.</li>
-						<li>Isolation of projects.</li>
-					</ul>
-				</section>
-
-				<section data-markdown="slides/automating-infrastructure/docker-containers.md"></section>
-				<section data-markdown="slides/docker-compose.md"></section>
-				<section data-markdown="slides/docker-compose-wordpress.md"></section>
-				<section data-markdown="slides/docker-compose-database-1.md" data-transition="slide-in none"></section>
-				<section data-markdown="slides/docker-compose-database-2.md" data-transition="slide-out none"></section>
-				<section data-markdown="slides/docker-compose-webserver.md"></section>
-
-				<section>
-					<h2>.env file</h2>
-
-					<pre><code data-trim data-noescape>
-						MYSQL_ROOT_PASSWORD=my_root_password
-						MYSQL_DATABASE=wordpress
-						MYSQL_USER=wordpress
-						MYSQL_USER_PASSWORD=wordpress_pwd
-						WEBSERVER_PORT=8000
-					</code></pre>
-				</section>
-
-				<section>
-					<h2>Environment variables</h2>
-
-					<ul>
-						<li>
-							Specific to an environment. Examples:
-
-							<ul>
-								<li>Database parameters</li>
-								<li>Website URLs (eg. root URL of the website, API endpoint, etc.)</li>
-								<li>Email recipients</li>
-							</ul>
-						</li>
-						<li>May contain sensitive data.</li>
-						<li>
-							Can be set in:
-
-							<ul>
-								<li>A <code>.env</code> file</li>
-								<li>In CI/CD tools like Travis, TeamCity, etc.</li>
-							</ul>
-						</li>
-						<li><strong>Not commited</strong> in the project.</li>
-					</ul>
-
-					<aside class="notes">
-						.env are used in many systems, like WebPack, Symfony, etc.
-					</aside>
-				</section>
-
-				<section>
-					<h2>Project structure</h2>
-
-					<img data-src="images/tree-1.png" alt="">
-
-					<aside class="notes">
-						WP code is abstracted/hidden
-
-						TODO: tree 1bis avec le theme / plugins?
-					</aside>
-				</section>
-
-				<section class="docker-up">
-					<h2>Let's run it</h2>
-
-					One command to start Docker containers:
-
-					<pre><code class="shell">docker-compose up -d</code></pre>
-
-					<p class="fragment" style="margin-top: 1.2em; margin-bottom: 0;">
-						Up and running:
-					</p>
-					<div style="display: flex;" class="result">
-						<div style="display: flex; align-items: center" class="fragment">
-							<img data-src="images/logos/php-logo.svg" alt="">
-							<div style="color: #888; margin-left: 10px; margin-right: 10px;">
-								+
-							</div>
-							<img data-src="images/logos/wordpress-logo.svg" alt="">
-						</div>
-
-						<div class="fragment">
-							<img data-src="images/logos/mysql-logo.svg" alt="">
-						</div>
-
-						<div class="fragment">
-							<img data-src="images/logos/nginx-small.png" alt="">
-						</div>
-					</div>
-				</section>
-
-				<section>
-					<img data-src="images/wp-wizard/wp-wizard-1.png" alt="">
-				</section>
-
-				<section data-markdown>
-					## Adding services is easy
-
-					Want phpMyAdmin? Update *docker-compose.yml*:
-
-					```yaml
-					services:
-						# ...
-
-						phpmyadmin:
-							image: phpmyadmin/phpmyadmin
-								links:
-									- database:db
-								ports:
-									- 8082:80
-					```
-
-					Access it at http://localhost:8082
-				</section>
-
-				<section>
-					<h2>What we get</h2>
-
-					<ul>
-						<li>Not error prone (clicks are...human)</li>
-						<li>Fast</li>
-						<li>Consistent configuration (same exact PHP / MySQL versions)</li>
-						<li>Versioned infrastructure.</li>
-						<li>Easy to update configuration for all environmnents.</li>
-						<li>Easy to deploy to any hosting providers.</li>
-						<li>Easy to deploy to reproduce (integrated into a CI/CD).</li>
-						<li>and... one command to setup the project.</li>
-					</ul>
-				</section>
-
-				<section data-background-color="#363a44">
-					<h1>Automate WordPress configuration</h1>
-				</section>
-
-				<section>
-					<h2>
-						Ditch the wizard
-					</h2>
-
-					<ul>
-						<li>Set the language.</li>
-						<li>Add default admin user.</li>
-						<li>Configure database parameters.</li>
-						<li>Define posts URL structure.</li>
-						<li>Choose a theme.</li>
-						<li>Install plugins.</li>
-					</ul>
-
-					<aside class="notes">
-						Note: there is nothing bad about that wizard, it's just that we can't reproduce the steps.
-					</aside>
-				</section>
-
-				<section>
-					<h2>WP-CLI</h2>
-
-					<div style="display: flex; width: 100%;">
-						<div>
-							<img data-src="images/wp-cli-logo.png" alt="" style="box-shadow: none">
-						</div>
-						<div>
-							<blockquote style="margin: 0 0 0 40px;">
-								<p>
-									WP-CLI provides a command-line interface for many actions you might perform in the WordPress admin.
-								</p>
-								<footer>wp-cli.org</footer>
-							</blockquote>
-						</div>
-					</div>
-				</section>
-
-				<section>
-					<h2>Useful WP-CLI commands</h2>
-
-					<div>
-						Generate a <em>wp-config.php</em> file with DB parameters:
-
-						<pre><code class="shell">wp-cli config create --dbhost=… --dbname=… &lt;...&gt;</code></pre>
-					</div>
-
-					<div>
-						Run the standard WordPress installation process:
-
-						<pre><code class="shell">wp-cli core install --url=… --title=…</code></pre>
-					</div>
-
-					<div>
-						Install and activate plugins:
-
-						<pre><code class="shell" data-trim data-noescape>
-							wp-cli plugin install contact-form-7 --activate
-							wp-cli plugin install advanced-custom-fields --activate
-						</code></pre>
-					</div>
-				</section>
-
-				<section>
-					<h2>Making use of WP-CLI</h2>
-
-					Update <code>docker-compose.yml</code>:
-
-					<pre>
-						<code class="yaml" data-trim data-noescape>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>WordPress, the automated way</title>
+
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/aloedev.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/monokai.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-background-color="#e2e7e9" class="front-slide">
+                    <h1 class="title">
+                        WordPress,
+                        <br>
+                        the automated way
+                    </h1>
+
+                    <img data-src="images/logo-wordcamp-vancouver-gray.svg" alt="">
+
+                    <aside class="notes">
+                        What this talk be about
+
+                        Note:
+                        Some parts will be shown quickly.
+                        You don't need all parts.
+                    </aside>
+                </section>
+
+                <section class="who-am-i">
+                    <div class="two-col">
+                        <div class="tronche">
+                            <img data-src="images/tronche.jpg" alt="">
+                        </div>
+                        <div class="info">
+                            <p class="name">
+                                Michaël Perrin
+                            </p>
+
+                            <ul>
+                                <li style="margin-bottom: 1em;">Full-stack developer</li>
+
+                                <li style="margin-bottom: 1em;">
+                                    PHP / Symfony, React, Elasticsearch, …
+                                    <div>and WordPress</div>
+                                </li>
+
+                                <li style="margin-bottom: 1em;">
+                                    <a href="https://twitter.com/michael_perrin">
+                                        <i aria-hidden="true" class="fa fa-twitter"></i>
+                                        michael_perrin
+                                    </a>
+                                </li>
+
+                                <li style="font-size: 80%">
+                                    #paris #houston #hiking #belgianbeers #…
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- <section class="front" data-background-color="#e2e7e9">
+                    <div class="desk">
+                        <div class="desk-container">
+                            <div class="desk-table">
+                            </div>
+                        </div>
+
+                        <img data-src="images/light.svg" class="light" alt="">
+
+                        <div class="laptop-container">
+                            <div class="laptop">
+                                <div class="screen-container">
+                                    <div class="screen">
+                                        <div class="editor">
+                                            <div class="window">
+                                                <div class="title-bar">
+                                                    <ul class="controls">
+                                                        <li class="control control-close"></li>
+                                                        <li class="control control-minimize"></li>
+                                                        <li class="control control-full-screen"></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="content">
+                                                    <pre id="typed"></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="keyboard">
+                                    <img data-src="images/laptop-keyboard.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <img data-src="images/vaxter.svg" class="vaxter" alt="">
+
+                        <div class="intro">
+                            <h1>Michaël Perrin</h1>
+
+                            <div>Développeur web freelance.</div>
+
+                            <div>
+                                <div class="availability available">
+                                    <a href="#contact"><i class="fa fa-circle" aria-hidden="true"></i> Disponible</a>
+                                </div>
+
+                                <div class="location">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i> Paris, France
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section> -->
+
+                <section data-background-color="#363a44">
+                    <h1>A typical WordPress set-up</h1>
+
+                    <p class="fragment">aka. the "Famous 5-minute install"</p>
+
+                    <aside class="notes">
+                        This is where do we go from.
+                        I will of course not go through every detail.
+                    </aside>
+                </section>
+
+                <section data-transition="slide-in none">
+                    <img data-src="images/wp-wizard/get-mamp.png" alt="">
+
+                    <aside class="notes">
+                        Download PHP, MySQL using any tool
+                    </aside>
+                </section>
+
+                <section data-transition="none">
+                    <img data-src="images/wp-wizard/cli.png" alt="">
+
+                    <aside class="notes">
+                        Or you may go the command line way
+                    </aside>
+                </section>
+
+                <section data-transition="none">
+                    <img data-src="images/wp-wizard/db-setup.png" alt="">
+
+                    <aside class="notes">
+                        Boring things to do in the database
+                    </aside>
+                </section>
+
+                <section data-transition="none">
+                    <img data-src="images/wp-wizard/get-wp.png" alt="">
+
+                    <aside class="notes">
+                        This is where do we go from
+                    </aside>
+                </section>
+
+                <section data-transition="none">
+                    <img data-src="images/wp-wizard/wp-wizard-1.png" alt="">
+
+                    <aside class="notes">
+                        This is where do we go from
+                    </aside>
+                </section>
+
+                <section data-transition="none">
+                    <img data-src="images/wp-wizard/wp-wizard-2.png" alt="">
+                </section>
+
+                <section data-transition="none">
+                    <img data-src="images/wp-wizard/wp-wizard-3.png" alt="">
+
+                    <aside class="notes">
+                        Set up the database parameters
+                    </aside>
+                </section>
+
+                <section data-transition="none">
+                    <img data-src="images/wp-wizard/wp-wizard-4.png" alt="">
+                </section>
+
+                <section data-transition="slide-out none">
+                    <img data-src="images/wp-wizard/wp-wizard-5.png" alt="">
+
+                    <aside class="notes">
+                        Choose parameters for the website
+                    </aside>
+                </section>
+
+                <section data-markdown="slides/wp-standard-install.md"></section>
+
+                <section>
+                    <img data-src="images/typing-cat.gif" alt="">
+                </section>
+
+                <!-- <section>
+                    <h2>No clicks whatsoever™️ installation</h2>
+
+                    <div style="display: flex">
+                        <div>
+                            <img data-src="images/turtle.svg" alt="" style="display: block; height: 40px; box-shadow: none;">
+                            5-minute install
+                        </div>
+
+                        <div>
+                            →
+                        </div>
+
+                        <div>
+                            <img data-src="images/rabbit.svg" alt="" style="display: block; height: 40px; box-shadow: none;">
+                            5-minute install
+                        </div>
+                    </div>
+
+                    <div>
+                        <img data-src="images/stopwatch.svg" alt="" style="height: 60px; box-shadow: none;">
+                    </div>
+
+                    <aside class="notes">
+                        It's not only about speed
+                    </aside>
+                </section> -->
+
+                <section class="three-automation-steps" data-background-color="#e2e7e9">
+                    <h2>
+                        What are we going to automate?
+                    </h2>
+
+                    <ol>
+                        <li class="fragment">Infrastructure setup.</li>
+                        <li class="fragment">WordPress configuration.</li>
+                        <li class="fragment">WordPress data.</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h2>
+                        Benefits of automation
+                    </h2>
+
+                    <p style="margin-bottom: 0; margin-top: 0; font-weight: 700">
+                        Why do we want to automate things?
+                    </p>
+                    <p class="fragment" style="font-size: 0.5em; margin-top: 0">Because developers are lazy? 🤔</p>
+
+                    <ul style="margin-left: 2em">
+                        <li class="fragment"><strong>Multi-environments</strong> (staging, QA, production, …)</li>
+                        <li class="fragment">
+                            Server configuration <strong>consistency</strong>.<br>
+                            <ul>
+                                <li class="fragment">Avoids « It works on my machine ¯\_(ツ)_/¯ ».</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">Easy <strong>versioning</strong> of the project.</li>
+                        <li class="fragment">Continuous Integration and Deployment.</li>
+                        <li class="fragment">Streamline team work.</li>
+                        <li class="fragment">Faster and predictable deployments.</li>
+                        <li class="fragment">"Cloud-ready".</li>
+                    </ul>
+
+                    <aside class="notes">
+                        We will see in more details these benefits.
+
+                        Version consistency: across developers and environments, no "it works for me effect". It can also be the PHP conf (max file size).
+                        Easy versioning: we only version what's needed
+                        Easier team work: work is replicated everywhere. No plugin to install manually, etc. Everyone is on the same page.
+                        Predictable: (no "in between" state)
+
+                        Isolation: several projects can be hosted on the same server
+                    </aside>
+                </section>
+
+                <section data-background-color="#363a44" data-markdown="slides/automating-infrastructure/index.md"></section>
+
+                <section>
+                    <img data-src="images/logos/docker-logo.svg" alt="Docker" style="box-shadow: none; display: block; margin-left: auto; margin-right: auto;">
+                </section>
+
+                <section class="what-is-docker">
+                    <h2>Quick introduction on Docker</h2>
+
+                    <ul>
+                        <li class="fragment">"Lightweight virtualisation".</li>
+                        <li class="fragment">Each service runs in a separate Docker container.</li>
+                        <li class="fragment">
+                            Many services already have official images.<br>
+
+                            <div class="fragment logos">
+                                <div>
+                                    <img data-src="images/logos/php-logo.svg" alt="">
+                                </div>
+                                <div>
+                                    <img data-src="images/logos/wordpress-logo.svg" alt="">
+                                </div>
+                                <div>
+                                    <img data-src="images/logos/mysql-logo.svg" alt="">
+                                </div>
+                                <div>
+                                    <img data-src="images/logos/phpmyadmin.png" alt="">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="fragment">Rule of thumb: one service per container.</li>
+                        <li class="fragment">Works on Linux, Windows, MacOS.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Docker: benefits</h2>
+
+                    <ul>
+                        <li>Very handy for local development and for servers.</li>
+                        <li>Documents and versions the infrastructure of the project.</li>
+                        <li>Allows to install any version of any dependency.</li>
+                        <li>Isolation of projects.</li>
+                    </ul>
+                </section>
+
+                <section data-markdown="slides/automating-infrastructure/docker-containers.md"></section>
+                <section data-markdown="slides/docker-compose.md"></section>
+                <section data-markdown="slides/docker-compose-wordpress.md"></section>
+                <section data-markdown="slides/docker-compose-database-1.md" data-transition="slide-in none"></section>
+                <section data-markdown="slides/docker-compose-database-2.md" data-transition="slide-out none"></section>
+                <section data-markdown="slides/docker-compose-webserver.md"></section>
+
+                <section>
+                    <h2>.env file</h2>
+
+                    <pre><code data-trim data-noescape>
+                        MYSQL_ROOT_PASSWORD=my_root_password
+                        MYSQL_DATABASE=wordpress
+                        MYSQL_USER=wordpress
+                        MYSQL_USER_PASSWORD=wordpress_pwd
+                        WEBSERVER_PORT=8000
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Environment variables</h2>
+
+                    <ul>
+                        <li>
+                            Specific to an environment. Examples:
+
+                            <ul>
+                                <li>Database parameters</li>
+                                <li>Website URLs (eg. root URL of the website, API endpoint, etc.)</li>
+                                <li>Email recipients</li>
+                            </ul>
+                        </li>
+                        <li>May contain sensitive data.</li>
+                        <li>
+                            Can be set in:
+
+                            <ul>
+                                <li>A <code>.env</code> file</li>
+                                <li>In CI/CD tools like Travis, TeamCity, etc.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Not commited</strong> in the project.</li>
+                    </ul>
+
+                    <aside class="notes">
+                        .env are used in many systems, like WebPack, Symfony, etc.
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Project structure</h2>
+
+                    <img data-src="images/tree-1.png" alt="">
+
+                    <aside class="notes">
+                        WP code is abstracted/hidden
+
+                        TODO: tree 1bis avec le theme / plugins?
+                    </aside>
+                </section>
+
+                <section class="docker-up">
+                    <h2>Let's run it</h2>
+
+                    One command to start Docker containers:
+
+                    <pre><code class="shell">docker-compose up -d</code></pre>
+
+                    <p class="fragment" style="margin-top: 1.2em; margin-bottom: 0;">
+                        Up and running:
+                    </p>
+                    <div style="display: flex;" class="fragment result">
+                        <div style="display: flex; align-items: center">
+                            <img data-src="images/logos/php-logo.svg" alt="">
+                            <div style="color: #888; margin-left: 10px; margin-right: 10px;">
+                                +
+                            </div>
+                            <img data-src="images/logos/wordpress-logo.svg" alt="">
+                        </div>
+
+                        <div>
+                            <img data-src="images/logos/mysql-logo.svg" alt="">
+                        </div>
+
+                        <div>
+                            <img data-src="images/logos/nginx-small.png" alt="">
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <img data-src="images/wp-wizard/wp-wizard-1.png" alt="">
+                </section>
+
+                <section data-markdown>
+                    ## Adding services is easy
+
+                    Want phpMyAdmin? Update *docker-compose.yml*:
+
+                    ```yaml
+                    services:
+                        # ...
+
+                        phpmyadmin:
+                            image: phpmyadmin/phpmyadmin
+                                links:
+                                    - database:db
+                                ports:
+                                    - 8082:80
+                    ```
+
+                    Access it at http://localhost:8082
+                </section>
+
+                <section>
+                    <h2>What we get</h2>
+
+                    <ul>
+                        <li>Not error prone (clicks are...human)</li>
+                        <li>Fast</li>
+                        <li>Consistent configuration (same exact PHP / MySQL versions)</li>
+                        <li>Versioned infrastructure.</li>
+                        <li>Easy to update configuration for all environmnents.</li>
+                        <li>Easy to deploy to any hosting providers.</li>
+                        <li>Easy to deploy to reproduce (integrated into a CI/CD).</li>
+                        <li>and... one command to setup the project.</li>
+                    </ul>
+                </section>
+
+                <section data-background-color="#363a44">
+                    <h1>Automate WordPress configuration</h1>
+                </section>
+
+                <section>
+                    <h2>
+                        Ditch the wizard
+                    </h2>
+
+                    <ul>
+                        <li>Set the language.</li>
+                        <li>Add default admin user.</li>
+                        <li>Configure database parameters.</li>
+                        <li>Define posts URL structure.</li>
+                        <li>Choose a theme.</li>
+                        <li>Install plugins.</li>
+                    </ul>
+
+                    <aside class="notes">
+                        Note: there is nothing bad about that wizard, it's just that we can't reproduce the steps.
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>WP-CLI</h2>
+
+                    <div style="display: flex; width: 100%;">
+                        <div>
+                            <img data-src="images/wp-cli-logo.png" alt="" style="box-shadow: none">
+                        </div>
+                        <div>
+                            <blockquote style="margin: 0 0 0 40px;">
+                                <p>
+                                    WP-CLI provides a command-line interface for many actions you might perform in the WordPress admin.
+                                </p>
+                                <footer>wp-cli.org</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Useful WP-CLI commands</h2>
+
+                    <div>
+                        Generate a <em>wp-config.php</em> file with DB parameters:
+
+                        <pre><code class="shell">wp-cli config create --dbhost=… --dbname=… &lt;...&gt;</code></pre>
+                    </div>
+
+                    <div>
+                        Run the standard WordPress installation process:
+
+                        <pre><code class="shell">wp-cli core install --url=… --title=…</code></pre>
+                    </div>
+
+                    <div>
+                        Install and activate plugins:
+
+                        <pre><code class="shell" data-trim data-noescape>
+                            wp-cli plugin install contact-form-7 --activate
+                            wp-cli plugin install advanced-custom-fields --activate
+                        </code></pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Making use of WP-CLI</h2>
+
+                    Update <code>docker-compose.yml</code>:
+
+                    <pre>
+                        <code class="yaml" data-trim data-noescape>
 toolbox:
   image: michaelperrin/wordpress-toolbox
   volumes:
@@ -563,273 +561,286 @@ toolbox:
     WORDPRESS_LOCALE: en_US
     WORDPRESS_WEBSITE_POST_URL_STRUCTURE: "/%year%/%monthnum%/%day%/%postname%/"
     WORDPRESS_WEBSITE_TITLE: "My beautiful website"
-						</code>
-					</pre>
+                        </code>
+                    </pre>
 
-					<aside class="notes">
-						Note: use of WORDPRESS_CONFIG_EXTRA works too. But it can't be modified.
-						Note: we have introduced some new env vars, but some of them are shared -> show updated .env file
-						Note: some variables are hard-coded (eg. locale, title, etc.) in docker-compose.yml instead of being set in the .env
-						because they don't depend on the environment.
-					</aside>
-				</section>
-
-
-				<section>
-					We don't want to install PHP and WP-CLI on every server.
-					We want to run commands with a Makefile.
-
-					I created a public Docker image that embeds WP-CLI and runs Makefile.
-				</section>
-
-				<section data-markdown>
-					## Makefile
-
-					What are Makefiles?
-
-					```Makefile
-					task_one:
-						# ...
-
-					task_two:
-						# ...
-
-					task_three: task_one task_two
-						# ...
-					```
-
-					It's a file where we can define a set of scripts grouped as tasks.
-					Allows us to abstract some commands, to make them easier to execute.
-					Allows us to run several commands with one command (it's a script).
-
-					Our first one: `make start` will run the project locally.
+                    <aside class="notes">
+                        Note: use of WORDPRESS_CONFIG_EXTRA works too. But it can't be modified.
+                        Note: we have introduced some new env vars, but some of them are shared -> show updated .env file
+                        Note: some variables are hard-coded (eg. locale, title, etc.) in docker-compose.yml instead of being set in the .env
+                        because they don't depend on the environment.
+                    </aside>
+                </section>
 
 
-					We are going to add them to the project.
-				</section>
+                <section>
+                    We don't want to install PHP and WP-CLI on every server.
+                    We want to run commands with a Makefile.
 
-				<section>
-					## Step 2: result
+                    I created a public Docker image that embeds WP-CLI and runs Makefile.
+                </section>
 
-					We have a fully functional WordPress website. I can login with the admin user I defined.
-					Screenshot.
-				</section>
+                <section data-markdown>
+                    ## Makefile
 
-				<section>
-					Should I talk about php.ini? Mentioning it at the end?
-				</section>
+                    What are Makefiles?
 
-				<section>
-					TODO: go further with .env: API endpoint, email recipients, etc.
-					Show that .env can be defined in TeamCity, etc.
-				</section>
+                    ```Makefile
+                    task_one:
+                        # ...
 
-				<section>
-					Show env variables of docker-compose.yml group by group (ADMIN_*, etc.)
-				</section>
+                    task_two:
+                        # ...
 
-				<section data-background-color="#363a44">
-					<h1>Automate data changes</h1>
-				</section>
+                    task_three: task_one task_two
+                        # ...
+                    ```
 
-				<section>
-					Migration
+                    It's a file where we can define a set of scripts grouped as tasks.
+                    Allows us to abstract some commands, to make them easier to execute.
+                    Allows us to run several commands with one command (it's a script).
 
-					<ul>
-						<li>Add page</li>
-						<li>Add menu entries</li>
-						<li>Create user (? TO CHECK)</li>
-						<li>
-							Configure a plugin
-							<ul>
-								<li>Add a contact form (Contact Form 7)</li>
-								<li>Define MailChimp API key</li>
-							</ul>
-						</li>
-						<li>Create a contact form (no clicks again)</li>
-					</ul>
+                    Our first one: `make start` will run the project locally.
 
-					<aside class="notes">
-						The QA person doesn't know very well WordPress and I don't want to either give instructions
-						or configure myself on each environment / forget to configure things.
-					</aside>
-				</section>
 
-				<section>
-					<h2>WP-migrations plugin</h2>
+                    We are going to add them to the project.
+                </section>
 
-					<ul>
-						<li class="fragment" style="margin-bottom: 0.7em">
-							<img data-src="images/logos/doctrine-logo.svg" alt="" style="box-shadow: none; float: right; height: 100px; margin: -10px 0 0 30px;">
-							Inspired by <a href="https://www.doctrine-project.org/projects/migrations.html">Doctrine Migrations</a> for PHP and SQL
-						</li>
-						<li class="fragment" style="margin-bottom: 0.7em">Runs user-defined migration files to describe data changes.</li>
-						<li class="fragment">Embeds a WP-CLI command to execute migrations.</li>
-					</ul>
-				</section>
+                <section>
+                    ## Step 2: result
 
-				<section data-markdown="slides/step3/migration-anatomy.md"></section>
+                    We have a fully functional WordPress website. I can login with the admin user I defined.
+                    Screenshot.
+                </section>
 
-				<section>
-					<h2>Migration files</h2>
+                <section>
+                    Should I talk about php.ini? Mentioning it at the end?
+                </section>
 
-					<ul>
-						<li>Stored in <code>wp-content/migrations</code> folder.</li>
-						<li>Only executed once.</li>
-						<li>Should be committed to version control.</li>
-					</ul>
+                <section data-background-color="#363a44">
+                    <h1>Automate data changes</h1>
+                </section>
 
-					TODO: show
+                <section>
+                    <h2>
+						Data migration examples
+					</h2>
 
-					<aside class="notes">
-						The command can be run as many times.
-					</aside>
-				</section>
+                    <ul>
+                        <li>Remove WordPress default content.</li>
+                        <li>Add page and menu entries.</li>
+                        <li>
+                            Configure plugins
+                            <ul>
+                                <li>Add a contact form (Contact Form 7)</li>
+                                <li>Define MailChimp API key</li>
+                                <li>…</li>
+                            </ul>
+                        </li>
+                    </ul>
 
-				<section>
-					<h2>Example</h2>
+                    <aside class="notes">
+                        The QA person doesn't know very well WordPress and I don't want to either give instructions
+                        or configure myself on each environment / forget to configure things.
+                    </aside>
+                </section>
 
-					<pre><code class="php" data-trim data-noescape style="font-size: 85%; line-height: 1.2; max-height: 450px;">
-						class Migration201909221755 implements MigrationInterface {
-						    use MigrationUtilitiesTrait;
+                <section>
+                    <h2>WP-migrations plugin</h2>
 
-						    public function execute() {
-						        $pageData = [
-						            'post_name'     => 'about', // Permalink
-						            'post_title'    => 'About us',
-						            'post_content'  => '',
-						            'post_status'   => 'publish',
-						            'post_author'   => 1,
-						            'post_type'     => 'page',
-						            'menu_order'    => 1,
-						        ];
+                    <ul>
+                        <li class="fragment" style="margin-bottom: 0.7em">
+                            <img data-src="images/logos/doctrine-logo.svg" alt="" style="box-shadow: none; float: right; height: 100px; margin: -10px 0 0 30px;">
+                            Inspired by <a href="https://www.doctrine-project.org/projects/migrations.html">Doctrine Migrations</a> for PHP and SQL
+                        </li>
+                        <li class="fragment" style="margin-bottom: 0.7em">Runs user-defined migration files to describe data changes.</li>
+                        <li class="fragment">Embeds a WP-CLI command to execute migrations.</li>
+                    </ul>
+                </section>
 
-						        $postId = wp_insert_post($pageData);
+                <section data-markdown="slides/step3/migration-anatomy.md"></section>
 
-						        $this->addToMenu($postId, 'Contact');
-						    }
-						}
+                <section>
+                    <h2>Migration files</h2>
 
-					</code></pre>
-				</section>
+                    <ul>
+                        <li>Stored in <code>wp-content/migrations</code></li>
+                        <li>Only executed once.</li>
+                        <li>Should be committed to version control.</li>
+                        <li>Executed on deployment.</li>
+                    </ul>
 
-				<section data-transition="slide-in none">
-					<h2>Run the migrations</h2>
+                    <aside class="notes">
+                        The command can be run as many times.
+                    </aside>
+                </section>
 
-					<pre><code class="shell">make wordpress_migrations_execute</code></pre>
+                <section>
+                    <h2>Example</h2>
 
-					<img src="images/cli-migration-1.png" alt="">
-				</section>
+                    <pre><code class="php" data-trim data-noescape data-line-numbers="4-18" style="font-size: 85%; line-height: 1.2; max-height: 450px;">
+                        class Migration201909221755 implements MigrationInterface {
+                            use MigrationUtilitiesTrait;
 
-				<section data-transition="slide-out none">
-					<h2>Run the migrations, again</h2>
+                            public function execute() {
+                                $pageData = [
+                                    'post_name'    => 'about', // Permalink
+                                    'post_title'   => 'About us',
+                                    'post_content' => '',
+                                    'post_status'  => 'publish',
+                                    'post_author'  => 1,
+                                    'post_type'    => 'page',
+                                    'menu_order'   => 1,
+                                ];
 
-					<pre><code class="shell">make wordpress_migrations_execute</code></pre>
+                                $postId = wp_insert_post($pageData);
 
-					<img src="images/cli-migration-2.png" alt="">
-				</section>
+                                $this->addToMenu($postId, 'Contact');
+                            }
+                        }
 
-				<section>
-					<h2>Benefits of migrations</h2>
+                    </code></pre>
 
-					<ul>
-						<li>Structural changes are versioned.</li>
-						<li>
-							Facilitate team work and easy to deploy.
+                    <aside class="notes">
+                        The idea is not necessarily to replace the editorial content. It's just to initiate the page.
+                        You can of course use the functions of WordPress.
+                    </aside>
+                </section>
 
-							<ul>
-								<li>No "in-between" state</li>
-								<li>Multi-environments (use env variable in migrations with <code>getenv()</code>!)</li>
-							</ul>
-						</li>
-						<li>Makes project work .</li>
-					</ul>
+                <section>
+                    <h2>Example 2</h2>
 
-					<p>
-						Downside: more work to do upfront
-					</p>
+                    <pre><code class="php" data-trim data-noescape style="font-size: 85%; line-height: 1.2; max-height: 450px;">
+                        class Migration201905311454 implements MigrationInterface {
+                            public function execute() {
+                                $this->setMailChimpApiKey(getenv('MAILCHIMP_API_KEY'));
+                            }
 
-					<aside class="notes">
-						That avoids forgetting things when deploying.
-					</aside>
-				</section>
+                            private function setMailChimpApiKey(string $key) {
+                                $options = get_option('mc4wp');
+                                $options['api_key'] = $key;
+                                update_option('mc4wp', $options);
+                            }
+                        }
+                    </code></pre>
 
-				<section>
-					<img data-src="images/admin-migrations.png" alt="">
-				</section>
+                    <aside class="notes">
+                        That requires to read the plugin docs or even retroengineer a bit
+                    </aside>
+                </section>
 
-				<section>
-					Deploying with Docker.
+                <section data-transition="slide-in none">
+                    <h2>Run the migrations</h2>
 
-					The idea is to build a new image each time. That's fine because we can reproduce builds automatically.
-				</section>
+                    <pre><code class="shell">make wordpress_migrations_execute</code></pre>
 
-				<section>
-					TODO
-					Things I have not shown.
+                    <img src="images/cli-migration-1.png" alt="">
+                </section>
 
-					* Access to database (phpMyAdmin or GUI).
-					* Run Webpack inside theme to build a theme.
-				</section>
+                <section data-transition="slide-out none">
+                    <h2>Run the migrations, again</h2>
 
-				<section>
-					<h2>Final tree structure</h2>
+                    <pre><code class="shell">make wordpress_migrations_execute</code></pre>
 
-					<div style="display: flex; align-items: center;">
-						<div style="margin-right: 60px;">
-							<img data-src="images/step3-filetree.png" alt="" style="max-height: 460px;">
-						</div>
+                    <img src="images/cli-migration-2.png" alt="">
+                </section>
 
-						<div>
-							<ul>
-								<li>Only what <strong>our</strong> project needs.</li>
-								<li>Easy versioning.</li>
-								<li>Includes infrastructure &amp; all automations.</li>
-							</ul>
-						</div>
-					</div>
+                <section>
+                    <h2>Benefits of migrations</h2>
 
-					<aside class="notes">
-						Easy versioning: no useless files.
-					</aside>
-				</section>
+                    <ul>
+                        <li>Structural changes are versioned.</li>
+                        <li>
+                            Facilitate team work and easy to deploy.
 
-				<section>
-					<img data-src="images/admin-migrations.png" alt="">
-				</section>
+                            <ul>
+                                <li>No "in-between" state</li>
+                                <li>Multi-environments (using environment variables)</li>
+                            </ul>
+                        </li>
+                    </ul>
 
-				<section>
-					<h2>Thank you</h2>
+                    <aside class="notes">
+                        That avoids forgetting things when deploying.
+                    </aside>
+                </section>
 
-					<ul>
-						<li>Twitter: <a href="https://twitter.com/michael_perrin">@michael_perrin</a></li>
-						<li>Demo repository: <a href="https://github.com/michaelperrin/automated-wordpress-demo">https://github.com/michaelperrin/automated-wordpress-demo</a></li>
-					</ul>
+                <section>
+                    <img data-src="images/admin-migrations.png" alt="">
+                </section>
 
-					<aside class="notes">
-						Slides will be available soon.
-					</aside>
-				</section>
-			</div>
-		</div>
+                <section>
+                    Deploying with Docker.
 
-		<script src="js/reveal.js"></script>
+                    The idea is to build a new image each time. That's fine because we can reproduce builds automatically.
+                </section>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				hash: true,
-				// width: '100%',
-				// height: '100%',
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
-			});
-		</script>
-	</body>
+                <section>
+                    TODO
+                    Things I have not shown.
+
+                    * Access to database (phpMyAdmin or GUI).
+                    * Run Webpack inside theme to build a theme.
+                </section>
+
+                <section>
+                    <h2>Final tree structure</h2>
+
+                    <div style="display: flex; align-items: center;">
+                        <div style="margin-right: 60px;">
+                            <img data-src="images/step3-filetree.png" alt="" style="max-height: 460px;">
+                        </div>
+
+                        <div>
+                            <ul>
+                                <li>Only what <strong>our</strong> project needs.</li>
+                                <li>Easy versioning.</li>
+                                <li>Includes infrastructure &amp; all automations.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <aside class="notes">
+                        Easy versioning: no useless files.
+                    </aside>
+                </section>
+
+                <section>
+                    <img data-src="images/admin-migrations.png" alt="">
+                </section>
+
+                <section>
+                    <h2>Thank you!</h2>
+
+                    <ul>
+                        <li>Twitter: <a href="https://twitter.com/michael_perrin">@michael_perrin</a></li>
+                        <li>Demo repository: <a href="https://github.com/michaelperrin/automated-wordpress-demo">https://github.com/michaelperrin/automated-wordpress-demo</a></li>
+                    </ul>
+
+                    <aside class="notes">
+                        Slides will be available soon.
+                    </aside>
+                </section>
+            </div>
+        </div>
+
+        <script src="js/reveal.js"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                hash: true,
+                // width: '100%',
+                // height: '100%',
+                dependencies: [
+                    { src: 'plugin/markdown/marked.js' },
+                    { src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/highlight/highlight.js', async: true }
+                ]
+            });
+        </script>
+    </body>
 </html>

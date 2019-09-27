@@ -431,8 +431,7 @@ body {
   .reveal section.front-slide h1 {
     font-size: 2em;
     font-weight: 700;
-    line-height: 1;
-    text-align: left; }
+    line-height: 1; }
   .reveal section.front-slide .author {
     color: #505052;
     text-align: left;
@@ -475,9 +474,9 @@ body {
   text-align: right; }
   .reveal section.who-am-i .tronche img {
     display: inline-block;
-    width: 120px;
-    height: 120px;
-    border-radius: 60px;
+    width: 140px;
+    height: 140px;
+    border-radius: 70px;
     margin-right: 80px;
     margin-top: 20px; }
 

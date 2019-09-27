@@ -15,3 +15,6 @@ class Migration201909221755 implements MigrationInterface
     }
 }
 ```
+
+Note:
+Each migration represents a data change.
