@@ -581,11 +581,17 @@ toolbox:
                     <aside class="notes">
                         I created a public Docker image that embeds WP-CLI and runs Makefile.
 
-                        Note: use of WORDPRESS_CONFIG_EXTRA works too. But it can't be modified.
-                        Note: we have introduced some new env vars, but some of them are shared -> show updated .env file
-                        Note: some variables are hard-coded (eg. locale, title, etc.) in docker-compose.yml instead of being set in the .env
+                        Use of WORDPRESS_CONFIG_EXTRA works too. But it can't be modified.<br>
+                        We have introduced some new env vars, but some of them are shared -> show updated .env file<br>
+                        Some variables are hard-coded (eg. locale, title, etc.) in docker-compose.yml instead of being set in the .env<br>
                         because they don't depend on the environment.
                     </aside>
+                </section>
+
+                <section>
+                    <div style="text-align: center">
+                        <img data-src="images/docker-containers-toolbox.svg" style="box-shadow: none">
+                    </div>
                 </section>
 
                 <section>
@@ -767,7 +773,7 @@ toolbox:
 
                     <pre><code class="shell">make wordpress_migrations_execute</code></pre>
 
-                    <img src="images/cli-migration-1.png" alt="">
+                    <img data-src="images/cli-migration-1.png" alt="">
                 </section>
 
                 <section data-transition="slide-out none">
@@ -775,7 +781,7 @@ toolbox:
 
                     <pre><code class="shell">make wordpress_migrations_execute</code></pre>
 
-                    <img src="images/cli-migration-2.png" alt="">
+                    <img data-src="images/cli-migration-2.png" alt="">
                 </section>
 
                 <section>
